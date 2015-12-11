@@ -3,6 +3,16 @@ Release notes for PopMovieTexture.
 Email graham@newchromantics.com for questions, feature requests, bug reports. (Or use  github's issues https://github.com/NewChromantics/PopMovieTexture_Release)
 
 
+Cross-platform Features;
+=====================
+- Does as little work in render thread as possible so all platforms can achieve >=60fps
+- Multi track support
+- Streams audio to AudioSource to allow customisation/positional audio
+- No platform specific C# code
+- Very precise sync to allow sync with external audio
+- Performance graph textures which show lag in decoding & aid debugging
+- NO additional DLL's required.
+
 
 Specific OS Features;
 ======================
@@ -10,6 +20,7 @@ Specific OS Features;
 	- OpenGL ES 2 & 3.
 	- Video decoding with or without opengl surface backing.
 	- Load files from APK (streaming assets), persistent data, or anywhere accessible by file system
+	- Multithread rendering support
 
 - Ios
 	- OpenGL ES 2 & 3
@@ -42,9 +53,12 @@ Known issues;
 	- Unity doesn't warn about H264 profiles/levels that are too high (just fails)
 	- Full 3K videos render green (or black if not using hardware backing), with no error
 	- Pausing & resuming app sometimes breaks asset reader (if closed for > 5secs)
+	- 60FPS video decodes FASTER with non-opengl backing
 
 - OSX
 	- No metal support
+	- 60FPS video decodes FASTER with non-opengl backing
+	- Client-storage can be tempramental
 
 - Windows
 	- Some win7 setups won't load DLL

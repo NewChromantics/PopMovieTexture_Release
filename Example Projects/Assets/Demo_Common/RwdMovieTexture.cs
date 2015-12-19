@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class RwdMovieTexture : MonoBehaviour {
 
 	public List<Texture>		mStreamTextures;
+	public int					mAudioStreamIndex = 0;
 	public List<RenderTexture>	mPerformanceTextures;
 	public bool					mLocalisedPerformanceGraph = true;
 
@@ -106,12 +107,13 @@ public class RwdMovieTexture : MonoBehaviour {
 		}
 		catch (System.Exception e)
 		{
-			DebugLog ("Error creating PopMovieTexture: " + e.Message);
+			Debug.LogError ("Error creating PopMovieTexture: " + e.Message);
 		}
 	}
 
 	void Update()
 	{
+		//	cannot read this in the audio thread, so we have to cache it
 		mAudioSampleRate = AudioSettings.outputSampleRate;
 
 		//	create movie
@@ -204,40 +206,26 @@ public class RwdMovieTexture : MonoBehaviour {
 	}
 
 
-	void OnAudioFilterRead(float[] data,int Channels)
+	void OnAudioFilterRead(float[] data, int channels)
 	{
 		if (mMovie == null)
 			return;
-
-		int SampleCount = data.Length / Channels;
+		
+		int SampleCount = data.Length / channels;
 		float SampleCountf = SampleCount;
 		float SampleRate = mAudioSampleRate;
 		float Duration = SampleRate / SampleCountf;
 		
 		//Debug.Log ("duration=" + Duration);
 		//Debug.Log ("Time diff = " + (mRealTime - mTime));
-
+		
 		ulong StartTime = mMovie.GetTimeMs ();
 		ulong EndTime = StartTime + (ulong)Duration;
-			
-		//	todo: proper index.
-		int StreamIndex = 3;
-		mMovie.GetAudioBuffer (data, Channels, StartTime, EndTime, StreamIndex);
-		/*
-		for (int i=0; i<SampleCount; i++) {
-			float t = i / (float)(SampleCount);
-			float time = mRealTime + (t * Duration);
-			
-			float Pitch = Mathf.Sin (Mathf.Deg2Rad * time * 360.0f * mFrequencyPerSecond);
-			//float Volume = Mathf.Sin( Mathf.Deg2Rad * time * 360.0f );
-			float Sample = Pitch * mGain;
-			
-			for (int c=0; c<Channels; c++)
-				data [i * Channels + c] = Sample;
-		}
 		
-		mTime += Duration;
-
-	*/
+		//	todo: work out index by which audio source index this is 
+		for (int i=0; i<data.Length; i++)
+			data [i] = (float)i;
+		mMovie.GetAudioBuffer (data, channels, StartTime, EndTime, mAudioStreamIndex);
 	}
+
 }

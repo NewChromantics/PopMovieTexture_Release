@@ -298,12 +298,11 @@ MonoBehaviour:
   mPeekBeforeDefferedCopy: 1
   mDebugNoNewPixelBuffer: 0
   mDebugRenderThreadCallback: 0
-  mResetInternalTimestamp: 0
+  mResetInternalTimestamp: 1
   mDebugBlit: 0
   mApplyVideoTransform: 1
   mGenerateMipMaps: 0
   mPopNearestFrame: 0
-  mEnableResync: 1
   mStretchToFillTexture: 1
   mDecoderUseHardwareBuffer: 1
   filename: kinect:*

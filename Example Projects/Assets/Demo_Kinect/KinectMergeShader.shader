@@ -2,8 +2,7 @@
 	Properties {
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_DepthTex ("_DepthTex", 2D) = "white" {}
-		DepthMax("DepthMax", Range(256,10000) ) = 10000
-		DepthRangeMax("DepthRangeMax", Range(0,1) ) = 0.5
+		DepthRangeMax("DepthRangeMax", Range(0,1) ) = 1.0
 		DepthRangeMin("DepthRangeMin", Range(0,1) ) = 0
 	}
 	SubShader {
@@ -18,7 +17,6 @@
 
 			sampler2D _MainTex;
 			sampler2D _DepthTex;
-			float DepthMax;
 			float DepthRangeMax;		//	normalised
 			float DepthRangeMin;		//	normalised
 			
@@ -43,18 +41,22 @@
 			float GetDepth(float2 uv)
 			{
 				float4 DepthRgba = tex2D( _DepthTex, uv );
-				float Depth = (DepthRgba.x*256.f) + (DepthRgba.y * (256.f*256.f) );
 				
-				//	invalid reading
-				//if ( Depth == 0 )	return -1;
+				//	get normalised depth
+				float Depth = (DepthRgba.x*255.f) + (DepthRgba.y * (255.f*255.f) );
+				Depth /= 255.f + (255.f*255.f);
+				
+				//	check for invalid pixels
+				bool InvalidDepth = (DepthRgba.z > 0.5f);
+				if ( InvalidDepth )
+					return -1;
 					
-				//	input range
-				Depth /= DepthMax;
 				if ( Depth > DepthRangeMax )
 					return -1;
 				if ( Depth < DepthRangeMin )
 					return -1;
 	
+				//	normalise to our range
 				Depth = (Depth-DepthRangeMin) / (DepthRangeMax-DepthRangeMin);
 				return Depth;
 			}

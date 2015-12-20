@@ -137,11 +137,11 @@ Material:
       data:
         first:
           name: DepthMax
-        second: 1000
+        second: 10000
       data:
         first:
           name: DepthRangeMax
-        second: .5
+        second: .300000012
       data:
         first:
           name: DepthRangeMin

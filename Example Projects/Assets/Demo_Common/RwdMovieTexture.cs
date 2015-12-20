@@ -40,7 +40,6 @@ public class RwdMovieTexture : MonoBehaviour {
 	public bool					mApplyVideoTransform = true;
 	public bool					mGenerateMipMaps = false;
 	public bool					mPopNearestFrame = false;
-	public bool 				mEnableResync = true;
 	public bool					mStretchToFillTexture = true;
 	public bool					mDecoderUseHardwareBuffer = true;
 
@@ -93,7 +92,6 @@ public class RwdMovieTexture : MonoBehaviour {
 		Params.mDebugBlit = mDebugBlit;
 		Params.mApplyVideoTransform = mApplyVideoTransform;
 		Params.mPopNearestFrame = mPopNearestFrame;
-		Params.mEnableResync = mEnableResync;
 		Params.mGenerateMipMaps = mGenerateMipMaps;
 		Params.mStretchImage = mStretchToFillTexture;
 		Params.mDecoderUseHardwareBuffer = mDecoderUseHardwareBuffer;

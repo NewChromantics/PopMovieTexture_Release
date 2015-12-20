@@ -208,8 +208,11 @@ public class RwdMovieTexture : MonoBehaviour {
 
 	void OnAudioFilterRead(float[] data, int channels)
 	{
-		if (mMovie == null)
+		if (mMovie == null) {
+			for (int i=0; i<data.Length; i++)
+				data [i] = 0;
 			return;
+		}
 		
 		int SampleCount = data.Length / channels;
 		float SampleCountf = SampleCount;
@@ -222,9 +225,6 @@ public class RwdMovieTexture : MonoBehaviour {
 		ulong StartTime = mMovie.GetTimeMs ();
 		ulong EndTime = StartTime + (ulong)Duration;
 		
-		//	todo: work out index by which audio source index this is 
-		for (int i=0; i<data.Length; i++)
-			data [i] = (float)i;
 		mMovie.GetAudioBuffer (data, channels, StartTime, EndTime, mAudioStreamIndex);
 	}
 

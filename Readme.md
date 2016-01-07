@@ -8,13 +8,14 @@ Cross-platform Features;
 - Does as little work in render thread as possible so all platforms can achieve >=60fps
 - Multi track support
 - Streams audio to AudioSource to allow customisation/positional audio
-- No platform specific C# code (Same code in unity for all platforsm)
+- No platform specific C# code (Same code in unity for all platforms)
 - Very precise sync to allow synchronisation with external audio (decoding audio not yet synchronised on all platforms)
 - Performance graph textures which show lag in decoding & aid debugging
 - NO additional DLL's required.
 - Works in editor!
 - Lots of options for tweaking performance/working around issues
 - Not limited to one video at a time
+- Synchronised .srt(subtitle file) parser.
 
 
 Specific OS Features;
@@ -66,13 +67,15 @@ Known issues; (see issue tracker for most recent bugs/fixes)
 	- 60FPS video decodes FASTER with non-opengl backing
 	- Client-storage can be tempramental
 	- Audio decoding experimental (not yet synchronised)
+	- WIP stream-from-shared-memfile code (ask for details)
 	
 - Windows
-	- Some win7 setups won't load DLL
+	- Some win7 setups won't load DLL (see issues for details)
 	- Reports that DLL won't load in built apps
 	- Audio decoding experimental (not yet synchronised)
 	- Win10 untested
 	- DX12 untested
-	- No DX9 support
+	- No DX9 support [yet]
 	- Performance Graphs currently don't render
+	- WIP stream-from-shared-memfile code (ask for details)
 

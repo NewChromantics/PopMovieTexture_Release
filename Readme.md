@@ -79,3 +79,39 @@ Known issues; (see issue tracker for most recent bugs/fixes)
 	- Performance Graphs currently don't render
 	- WIP stream-from-shared-memfile code (ask for details)
 
+Todo/Work in progress;
+=====================
+- All platforms
+	- HTTP/Websocket file streaming (WIP)
+	- HLS streaming (parser done, working on cross platform mpeg2ts decoder)
+	- DASH streaming
+	- Explicit .gif support
+	- Explicit support of image(non-video) formats
+	- Audio visualisation (for debugging)
+	- Audio sync & re-sampling
+	- More modular C# interface
+	- Rewind/reverse seeking
+	- Gapless playlisting
+	- Frame-level-control (instead of time)
+	- More stats on decoding/downloading/playback speeds/rates
+	- Expose more stream meta
+	
+- Windows & OSX
+	- Shared-mem-file reading for working with drivers/3rd party apps
+	- Stream kinect skeletons to unity (as text/json stream)
+	- Built in kinect auto-alignment (detect floor plane and stream camera extrinsics to unity)
+	- Hardware(pixel shader) kinect depth alignment
+	- Depth map cleanup (noise reduction, hole filling)
+	- Window interaction (cross platform method to send mouse clicks, keyboard input etc)
+	
+- IOS & OSX
+	- Metal support (half finished)
+
+- Windows
+	- Full win10 support
+	- Full DX12 support
+	- Add Nvidia/Cuda/AMD hardware decoder support
+	
+- Android
+	- Camera support
+	- Stream from OBB/ZIP files

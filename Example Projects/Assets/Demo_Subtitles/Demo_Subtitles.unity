@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb12c03d714e49748d19f973afef42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mFilename: Elf.2003.srt
+  mFilename: streamingassets:Elf.2003.srt
   mMaxLines: 30
   mTime: 1
   mTimeMultipler: 100

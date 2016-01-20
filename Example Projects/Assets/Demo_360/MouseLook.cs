@@ -35,7 +35,6 @@ public class MouseLook : MonoBehaviour {
 		if (UnityEngine.VR.VRSettings.loadedDevice != UnityEngine.VR.VRDeviceType.None)
 			return;
 
-		/*
 		bool UseGyro = UseGyroOnMobile;
 		{
 			UseGyro = UseGyroOnMobile;
@@ -43,26 +42,30 @@ public class MouseLook : MonoBehaviour {
 				Input.gyro.enabled = true;
 			UseGyro &= Input.gyro.enabled;
 		}
-		**/
-		bool UseGyro = true;
-		Input.gyro.enabled = true;
-
+	
 
 		if (UseGyro) 
 		{
 			bool GyroValid = Input.gyro.enabled;
-			Vector4 Gyro4 =  new Vector4( Input.gyro.attitude.x, Input.gyro.attitude.y, Input.gyro.attitude.z, Input.gyro.attitude.w );
-			GyroValid &= Gyro4.SqrMagnitude() > 0;
+			{
+				//	first usage of the attituide is all zeros, ignore this
+				Vector4 Gyro4 =  new Vector4( Input.gyro.attitude.x, Input.gyro.attitude.y, Input.gyro.attitude.z, Input.gyro.attitude.w );
+				GyroValid &= Gyro4.SqrMagnitude() > 0;
+			}
 
 			if ( GyroValid )
 			{
+				//	correction stolen from google cardboad SDK
+				var att = Input.gyro.attitude;
+				att = new Quaternion(att.x, att.y, -att.z, -att.w);
+				att = Quaternion.Euler(0, 0, 0) * att;
+
 				if ( mInitialGyro == null )
 				{
-					mInitialGyro = Input.gyro.attitude;
-					Debug .Log("Initialising gyro to " + mInitialGyro);
+					mInitialGyro = att;
 				}
 
-			    transform.localRotation = Quaternion.Inverse(mInitialGyro.Value) * Input.gyro.attitude;
+				transform.localRotation = Quaternion.Inverse(mInitialGyro.Value) * att;
 			}
 		}
 		else if (axes == RotationAxes.MouseXAndY)

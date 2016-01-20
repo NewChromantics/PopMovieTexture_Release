@@ -10,6 +10,7 @@ public class RwdMovieTexture : MonoBehaviour {
 	public List<Texture>		mStreamTextures;
 	public int					mAudioStreamIndex = 0;
 	public List<RenderTexture>	mPerformanceTextures;
+	public List<RenderTexture>	mAudioTextures;
 	public bool					mLocalisedPerformanceGraph = true;
 
 	private PopMovie			mMovie;
@@ -133,6 +134,16 @@ public class RwdMovieTexture : MonoBehaviour {
 			//	gr: the updateTexture() can cause mMovie to be deleted. mono seems to miss throwing exceptions if mMovie is null so it will take down unity
 			if (mMovie != null)
 				mMovie.UpdatePerformanceGraphTexture (texture, s, mLocalisedPerformanceGraph );
+		}
+		
+		for (int s=0; s<mAudioTextures.Count; s++) {
+			var texture = mAudioTextures [s];
+			if (texture == null)
+				continue;
+			
+			//	gr: the updateTexture() can cause mMovie to be deleted. mono seems to miss throwing exceptions if mMovie is null so it will take down unity
+			if (mMovie != null)
+				mMovie.UpdateAudioTexture (texture, s );
 		}
 		
 		for (int s=0; s<mStreamTextures.Count; s++) {

@@ -37,6 +37,7 @@ public class MovieController : MonoBehaviour {
 
 	void OnMovieFrameReady()
 	{
+		mTarget.gameObject.SetActive (true);
 		mTarget.material.mainTexture = mTargetTexture;
 	}
 

@@ -3,7 +3,10 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
-	}
+  		CameraFovHorz("CameraFovHorz",Range(0,360)) = 360
+    	CameraFovTop("CameraFovTop", Range(0,360) ) = 0
+    	CameraFovBottom("CameraFovBottom", Range(0,360) ) = 360
+   	}
 	SubShader
 	{
 		Tags { "RenderType"="Opaque" }
@@ -35,7 +38,10 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
-			
+			float CameraFovHorz;
+			float CameraFovTop;
+			float CameraFovBottom;
+				
 			v2f vert (appdata v)
 			{
 				v2f o;

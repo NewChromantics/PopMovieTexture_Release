@@ -1,26 +1,63 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
 
 public class MovieController : MonoBehaviour {
 
 	public MeshRenderer			mTarget;
 	public PopMovie				mMovie;
 	public string				mFilename;
-	public Texture				mTargetTexture;
+	public List<Texture>		mStreamTextures;
+	public List<Texture>		mPerformanceTextures;
+	public List<Texture>		mAudioTextures;
+	public bool					mLocalisedPerformanceGraph = false;
+	public bool					mEnableDebugLog = false;
 
 	public void StartMovie()
 	{
 		var Params = new PopMovieParams ();
 		mMovie = new PopMovie (mFilename, Params, true);
-		mMovie.AddDebugCallback (Debug.Log);
+
+		if ( mEnableDebugLog )
+			mMovie.AddDebugCallback (Debug.Log);
 	}
 
 	void Update()
 	{
 		if (mMovie != null)
 			mMovie.Update ();
-		if (mMovie != null && mTargetTexture!=null)
-			mMovie.UpdateTexture(mTargetTexture);
+
+		for (int s=0; s<mStreamTextures.Count; s++) {
+			var texture = mStreamTextures [s];
+			if (texture == null)
+				continue;
+			
+			//	gr: the updateTexture() can cause mMovie to be deleted. mono seems to miss throwing exceptions if mMovie is null so it will take down unity
+			if (mMovie != null)
+				mMovie.UpdateTexture (texture, s);
+		}
+
+		for (int s=0; s<mPerformanceTextures.Count; s++) {
+			var texture = mPerformanceTextures [s];
+			if (texture == null)
+				continue;
+			
+			//	gr: the updateTexture() can cause mMovie to be deleted. mono seems to miss throwing exceptions if mMovie is null so it will take down unity
+			if (mMovie != null)
+				mMovie.UpdatePerformanceGraphTexture (texture, s, mLocalisedPerformanceGraph );
+		}
+		
+		for (int s=0; s<mAudioTextures.Count; s++) {
+			var texture = mAudioTextures [s];
+			if (texture == null)
+				continue;
+			
+			//	gr: the updateTexture() can cause mMovie to be deleted. mono seems to miss throwing exceptions if mMovie is null so it will take down unity
+			if (mMovie != null)
+				mMovie.UpdateAudioTexture (texture, s );
+		}
+		
 
 		//	waiting for first frame
 		if (!HaveAppliedTexture () && mMovie!=null ) {
@@ -32,13 +69,13 @@ public class MovieController : MonoBehaviour {
 
 	bool HaveAppliedTexture()
 	{
-		return mTarget.material.mainTexture == mTargetTexture;
+		return mTarget.material.mainTexture == mStreamTextures[0];
 	}
 
 	void OnMovieFrameReady()
 	{
 		mTarget.gameObject.SetActive (true);
-		mTarget.material.mainTexture = mTargetTexture;
+		mTarget.material.mainTexture = mStreamTextures[0];
 	}
 
 }

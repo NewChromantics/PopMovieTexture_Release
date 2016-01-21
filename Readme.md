@@ -54,8 +54,8 @@ Known issues; (see issue tracker for most recent bugs/fixes)
 	- Audio needs resampling from android project-default of 24000hz (Set your project audio settings to match the audio rate!)
 	- Files in APK limited to ~250mb (reports "file not found")
 	- To split with ffmpeg 
-		- __ffmpeg -i long.mp4 -vcodec copy -acodec copy -ss 0 -t 50 short_0_50.mp4
-		- __ffmpeg -i long.mp4 -vcodec copy -acodec copy -ss 50 -t 100 short_50_100.mp4
+		- __ffmpeg -i long.mp4 -vcodec copy -acodec copy -ss 0 -t 50 short_0_50.mp4__
+		- __ffmpeg -i long.mp4 -vcodec copy -acodec copy -ss 50 -t 100 short_50_100.mp4__
 
 
 - Ios

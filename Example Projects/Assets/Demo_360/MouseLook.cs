@@ -29,15 +29,27 @@ public class MouseLook : MonoBehaviour {
 		mInitialGyro = null;
 	}
 
+	static public bool UsingVr()
+	{
+		if (UnityEngine.VR.VRSettings.loadedDevice == UnityEngine.VR.VRDeviceType.None)
+			return false;
+
+
+		if (!UnityEngine.VR.VRDevice.isPresent)
+			return false;
+
+		return true;
+	}
+
+
 	void Update ()
 	{
 		//	in VR mode, no mouse/gyro at all!
-		if (UnityEngine.VR.VRSettings.loadedDevice != UnityEngine.VR.VRDeviceType.None)
+		if (UsingVr() )
 			return;
 
 		bool UseGyro = UseGyroOnMobile;
 		{
-			UseGyro = UseGyroOnMobile;
 			if (UseGyro)
 				Input.gyro.enabled = true;
 			UseGyro &= Input.gyro.enabled;

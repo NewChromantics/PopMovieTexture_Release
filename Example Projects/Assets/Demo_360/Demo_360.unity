@@ -244,11 +244,11 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 340662706}
   m_LocalRotation: {x: 0, y: .70710659, z: 0, w: -.707106948}
-  m_LocalPosition: {x: 0, y: 0, z: -26.3999996}
+  m_LocalPosition: {x: 0, y: 0, z: -26.4000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 542712599}
-  m_RootOrder: 4
+  m_Father: {fileID: 1202912607}
+  m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -137.699997, y: 5}
@@ -399,7 +399,7 @@ GameObject:
   - 222: {fileID: 542712601}
   - 114: {fileID: 542712600}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: WorldPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,10 +417,6 @@ RectTransform:
   m_Children:
   - {fileID: 1720673379}
   - {fileID: 2069430103}
-  - {fileID: 1635561287}
-  - {fileID: 2118016866}
-  - {fileID: 340662707}
-  - {fileID: 678548904}
   m_Father: {fileID: 1918715742}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -488,8 +484,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -92.3000031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 542712599}
-  m_RootOrder: 5
+  m_Father: {fileID: 1202912607}
+  m_RootOrder: 3
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -158.399994, y: 73.8000031}
@@ -554,8 +550,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07177d184af6438896f2e4dcb877fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mCanvas: {fileID: 1918715741}
+  mCanvas: {fileID: 542712598}
   m360Geo: {fileID: 439820100}
+  mToggleSkybox: 1
   mRotationSpeed: 360
 --- !u!4 &748949977
 Transform:
@@ -599,6 +596,42 @@ Transform:
   - {fileID: 1398134665}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1202912606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1202912607}
+  m_Layer: 5
+  m_Name: Debug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1202912607
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202912606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1635561287}
+  - {fileID: 2118016866}
+  - {fileID: 340662707}
+  - {fileID: 678548904}
+  m_Father: {fileID: 1918715742}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &1398134664
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +733,7 @@ GameObject:
   - 222: {fileID: 1507862911}
   - 114: {fileID: 1507862910}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: ScreenPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -853,11 +886,11 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1635561286}
   m_LocalRotation: {x: 0, y: .70710659, z: 0, w: -.707106948}
-  m_LocalPosition: {x: 0, y: 0, z: -25.7999992}
+  m_LocalPosition: {x: 0, y: 0, z: -25.7999954}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 542712599}
-  m_RootOrder: 2
+  m_Father: {fileID: 1202912607}
+  m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -137.5, y: 74.6999969}
@@ -924,7 +957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTarget: {fileID: 439820101}
   mFilenames:
-  - streamingassets:shark_0_50_baseline3.mp4
   - streamingassets:shark_50_150_baseline3.mp4
   mStreamTextures:
   - {fileID: 8400000, guid: 31769ae08799a455683b676adb7bb865, type: 2}
@@ -934,8 +966,8 @@ MonoBehaviour:
   mAudioTextures:
   - {fileID: 8400000, guid: ecfdba2cc7cfa42f992f52560b0c479f, type: 2}
   mLocalisedPerformanceGraph: 1
-  mEnableDebugLog: 1
-  mEnableDebugTextures: 1
+  mEnableDebugLog: 0
+  mEnableDebugTextures: 0
   mErrorText: {fileID: 1720673380}
   mOnFinished:
     m_PersistentCalls:
@@ -1458,6 +1490,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 542712599}
+  - {fileID: 1202912607}
   m_Father: {fileID: 987914611}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -1725,8 +1758,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -92.0999985}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 542712599}
-  m_RootOrder: 3
+  m_Father: {fileID: 1202912607}
+  m_RootOrder: 1
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
   m_AnchoredPosition: {x: -158.300003, y: 5}

@@ -9,23 +9,25 @@ Cross-platform Features;
 - Multi track support
 - Streams audio to AudioSource to allow customisation/positional audio
 - No platform specific C# code (Same code in unity for all platforms)
-- Very precise sync to allow synchronisation with external audio (decoding audio not yet synchronised on all platforms)
+- Very precise sync to allow synchronisation with external audio (as well as sync with audio in movies)
 - Performance graph textures which show lag in decoding & aid debugging
+- Audio visualisation to aid audio debugging
 - NO additional DLL's required.
 - Works in editor!
 - Lots of options for tweaking performance/working around issues
 - Not limited to one video at a time
 - Synchronised .srt(subtitle file) parser.
-
+- Can Enumerate sources to list all videos, cameras, devices, windows that can be used with the plugin
+- Can be used independently of unity with the C interface (enquire within for details)
 
 Specific OS Features;
 ======================
 - Android
 	- OpenGL ES 2 & 3.
 	- Video decoding with or without opengl surface backing.
-	- Load files from APK (streaming assets), persistent data, or anywhere accessible by file system
+	- Load files from APK (streaming assets), OBB files(patches), non-compressed zip/jars, persistent data, or anywhere accessible by file system (eg. sd card)
 	- Multithread rendering support
-	- Multiple track support
+	- Multiple track support (except mpegts files, see issues)
 
 - Ios
 	- OpenGL ES 2 & 3
@@ -49,16 +51,15 @@ Specific OS Features;
 Known issues; (see issue tracker for most recent bugs/fixes)
 ======================
 - Android
-	- Audio decoding experimental (needs resampling for android defaults, not yet synchronised)
+	- Audio needs resampling from android project-default of 24000hz (Set your project audio settings to match the audio rate!)
 	- Files in APK limited to ~250mb (reports "file not found")
 
 - Ios
 	- Video camera support experimental
-	- Audio decoding experimental (not yet synchronised)
 	- No metal support
-	- iphone 5/4 not currently decoding
+	- iphone 5/4 not currently decoding (Though may just need very specific resolutions)
 	- Unity doesn't warn about H264 profiles/levels that are too high (just fails)
-	- Full 4K videos render green (or black if not using hardware backing), with no error
+	- Full 4K videos render green (or black if not using hardware backing), with no error. Even slightly smaller and it's fine.
 	- Pausing & resuming app sometimes breaks asset reader (if closed for > 5secs)
 	- 60FPS video decodes FASTER with non-opengl backing
 
@@ -66,17 +67,13 @@ Known issues; (see issue tracker for most recent bugs/fixes)
 	- No metal support
 	- 60FPS video decodes FASTER with non-opengl backing
 	- Client-storage can be tempramental
-	- Audio decoding experimental (not yet synchronised)
 	- WIP stream-from-shared-memfile code (ask for details)
 	
 - Windows
-	- Some win7 setups won't load DLL (see issues for details)
-	- Reports that DLL won't load in built apps
-	- Audio decoding experimental (not yet synchronised)
-	- Win10 untested
 	- DX12 untested
-	- No DX9 support [yet]
+	- No DX9 support
 	- Performance Graphs currently don't render
+	- Audio visualisation currently doesn't render
 	- WIP stream-from-shared-memfile code (ask for details)
 
 Todo/Work in progress;
@@ -86,9 +83,7 @@ Todo/Work in progress;
 	- HLS streaming (parser done, working on cross platform mpeg2ts decoder)
 	- DASH streaming
 	- Explicit .gif support
-	- Explicit support of image(non-video) formats
-	- Audio visualisation (for debugging)
-	- Audio sync & re-sampling
+	- Audio re-sampling
 	- More modular C# interface
 	- Rewind/reverse seeking
 	- Gapless playlisting
@@ -108,10 +103,8 @@ Todo/Work in progress;
 	- Metal support (half finished)
 
 - Windows
-	- Full win10 support
 	- Full DX12 support
-	- Add Nvidia/Cuda/AMD hardware decoder support
+	- Add Nvidia/Cuda/AMD specific hardware decoder support (NVDec etc)
 	
 - Android
 	- Camera support
-	- Stream from OBB/ZIP files

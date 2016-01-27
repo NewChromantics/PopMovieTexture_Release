@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class Demo_Enum : MonoBehaviour {
-
-	[Range(0,10)]
-	public float			RefreshRate = 0.5f;
-	public UnityEngine.UI.Text			Target;
+public class EnumMovies : MonoBehaviour {
 
 	[Range(0,10)]
-	public float			mRefreshCountdown = 1;
+	public float					RefreshRate = 5;
+	public UnityEngine.UI.Text		Target;
 
-	private string			mGuiString;
+	[Range(0,10)]
+	public float					mRefreshCountdown = 1;
 
+	private string					mGuiString;
+
+	private List<string> mSources;
+		
 	void UpdateOutput(string Text)
 	{
 		if (Target == null) {
@@ -25,27 +28,19 @@ public class Demo_Enum : MonoBehaviour {
 
 	void EnumSources()
 	{
-		try
+		var Sources = PopMovie.EnumSources ();
+		if (Sources == null)
 		{
-			var Sources = PopMovie.EnumSources ();
-			if (Sources == null)
-			{
-				UpdateOutput ("No sources found, error?");
-				return;
-			}
-			string Output = "";
-			foreach( string Source in Sources )
-			{
-				Output += Source + "\n";
-			}
-			UpdateOutput (Output);
+			UpdateOutput ("No sources found, error?");
 			return;
 		}
-		catch(System.Exception e)
+		string Output = "";
+		foreach( string Source in Sources )
 		{
-			string Error = e.GetType().Name + "/" + e.Message;
-			UpdateOutput("Exception getting sources: " + Error);
+			Output += Source + "\n";
 		}
+		UpdateOutput (Output);
+		return;
 	}
 
 	void Update () {

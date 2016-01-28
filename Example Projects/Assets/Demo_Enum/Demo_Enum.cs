@@ -4,10 +4,11 @@ using System.Collections;
 public class Demo_Enum : MonoBehaviour {
 
 	[Range(0,10)]
-	public float			RefreshRate = 5;
+	public float			RefreshRate = 1;
 	public UnityEngine.UI.Text			Target;
 
-	private float			mRefreshCountdown = 1;
+	[Range(0,10)]
+	private float			RefreshCountdown = 0.5f;
 
 	private string			mGuiString;
 
@@ -49,10 +50,10 @@ public class Demo_Enum : MonoBehaviour {
 
 	void Update () {
 	
-		mRefreshCountdown -= Time.deltaTime;
-		if (mRefreshCountdown < 0) {
+		RefreshCountdown -= Time.deltaTime;
+		if (RefreshCountdown < 0) {
 			EnumSources ();
-			mRefreshCountdown = RefreshRate;
+			RefreshCountdown = RefreshRate;
 		}
 
 		PopMovie.FlushDebug ( (string s)=>{Debug.Log(s);});

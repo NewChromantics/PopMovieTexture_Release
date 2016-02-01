@@ -4,51 +4,54 @@ using System.Collections;
 public class Demo_Enum : MonoBehaviour {
 
 	[Range(0,10)]
-	public float			RefreshRate = 1;
-	public UnityEngine.UI.Text			Target;
+	public float					RefreshRate = 1;
+	public UnityEngine.UI.Text		Target;
 
 	[Range(0,10)]
-	private float			RefreshCountdown = 0.5f;
+	private float					RefreshCountdown = 0.5f;
 
-	[Range(0,2000)]
-	public uint				MaxMatches = 1000;
+	private uint 					mIndex = 0;
+
+	//	gui can only display so many characters.
+	public uint				MaxStringLength = 10000;
 
 	private string			mGuiString;
 
-	void UpdateOutput(string Text)
+	void AddSource(string Text,uint Index)
 	{
 		if (Target == null) {
-			mGuiString = Text;
+			mGuiString += Text;
 			return;
 		}
 
-		Target.text = Text;
+		if (Index == 0)
+			Target.text = "";
+
+		//	full!
+		if (Target.text.Length > MaxStringLength)
+			return;
+
+		//	about to overflow
+		if (Target.text.Length + Text.Length >= MaxStringLength)
+			Target.text += " <reached UI text string limit> \n";
+		else
+			Target.text += Text + "\n";
+	
 		mGuiString = null;
 	}
 
 	void EnumSources()
 	{
-		try
-		{
-			var Sources = PopMovie.EnumSources (MaxMatches);
-			if (Sources == null)
-			{
-				UpdateOutput ("No sources found, error?");
-				return;
-			}
-			string Output = "";
-			foreach( string Source in Sources )
-			{
-				Output += Source + "\n";
-			}
-			UpdateOutput (Output);
+		PopMovie.EnumDirectory( Application.streamingAssetsPath, true );
+		PopMovie.EnumDirectory( Application.persistentDataPath, true );
+		PopMovie.EnumDirectory( PopMovie.FilenamePrefix_Sdcard, true );
+
+		var Source = PopMovie.EnumSource (mIndex);
+		if (Source == null)
 			return;
-		}
-		catch(System.Exception e)
-		{
-			string Error = e.GetType().Name + "/" + e.Message;
-			UpdateOutput("Exception getting sources: " + Error);
-		}
+		AddSource (Source,mIndex);
+
+		mIndex++;
 	}
 
 	void Update () {

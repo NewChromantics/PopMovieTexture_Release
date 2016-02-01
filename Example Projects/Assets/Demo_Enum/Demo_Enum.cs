@@ -10,6 +10,9 @@ public class Demo_Enum : MonoBehaviour {
 	[Range(0,10)]
 	private float			RefreshCountdown = 0.5f;
 
+	[Range(0,2000)]
+	public uint				MaxMatches = 1000;
+
 	private string			mGuiString;
 
 	void UpdateOutput(string Text)
@@ -27,7 +30,7 @@ public class Demo_Enum : MonoBehaviour {
 	{
 		try
 		{
-			var Sources = PopMovie.EnumSources ();
+			var Sources = PopMovie.EnumSources (MaxMatches);
 			if (Sources == null)
 			{
 				UpdateOutput ("No sources found, error?");

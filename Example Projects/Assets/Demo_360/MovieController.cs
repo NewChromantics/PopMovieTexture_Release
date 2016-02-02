@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class MovieController : MonoBehaviour {
 
+	public bool					mEnablePixelClientStorageOsx = true;		
 	public MeshRenderer			mTarget;
 	public PopMovie				mMovie;
 	public List<string>			mFilenames;
@@ -56,7 +57,7 @@ public class MovieController : MonoBehaviour {
 			}
 			else
 			{
-				Debug.Log("Current duration: " + CurrentTime + "/" + Duration );
+				//Debug.Log("Current duration: " + CurrentTime + "/" + Duration );
 			}
 		}
 
@@ -74,6 +75,7 @@ public class MovieController : MonoBehaviour {
 			mFilenameQueue.RemoveAt (0);
 
 			var Params = new PopMovieParams ();
+			Params.mPixelClientStorage = mEnablePixelClientStorageOsx;
 			//Params.mSkipPushFrames = true;
 			try {
 				mMovie = new PopMovie (Filename, Params, true);

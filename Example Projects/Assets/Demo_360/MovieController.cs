@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class MovieController : MonoBehaviour {
 
+	public bool					mGenerateMipMaps = false;
 	public bool					mEnablePixelClientStorageOsx = true;		
 	public MeshRenderer			mTarget;
 	public PopMovie				mMovie;
@@ -75,6 +76,7 @@ public class MovieController : MonoBehaviour {
 			mFilenameQueue.RemoveAt (0);
 
 			var Params = new PopMovieParams ();
+			Params.mGenerateMipMaps = mGenerateMipMaps;
 			Params.mPixelClientStorage = mEnablePixelClientStorageOsx;
 			//Params.mSkipPushFrames = true;
 			try {

@@ -21,13 +21,39 @@ public class MovieController : MonoBehaviour {
 	public UnityEngine.Events.UnityEvent	mOnStarted;
 
 	private List<string>		mFilenameQueue;
+	private bool				mStarted = false;
+
 	
 	public void StartMovie()
 	{
 		//	setup the queue
 		mFilenameQueue = new List<string> ();
 		mFilenameQueue.AddRange (mFilenames);
+		mStarted = false;
 
+		UpdateMovie ();
+	}
+
+	public void StartMovie(string Filename)
+	{
+		//	setup the queue
+		mFilenameQueue = new List<string> ();
+		mFilenameQueue.Add (Filename);
+		mStarted = false;
+		
+		UpdateMovie ();
+	}
+	
+	public void StopMovie()
+	{
+		//	delete current movie (to "try and go to next")
+		mMovie = null;
+		System.GC.Collect();
+		
+		//	clear queue so we don't go to another
+		if (mFilenameQueue != null)
+			mFilenameQueue.Clear ();
+		
 		UpdateMovie ();
 	}
 
@@ -35,6 +61,7 @@ public class MovieController : MonoBehaviour {
 	{
 		//	signal we're no longer "started"
 		mFilenameQueue = null;
+		mStarted = false;
 
 		if (mOnFinished!=null)
 			mOnFinished.Invoke ();
@@ -130,21 +157,17 @@ public class MovieController : MonoBehaviour {
 		}
 
 		//	waiting for first frame
-		if (!HaveAppliedTexture () && mMovie!=null ) {
+		if (!mStarted && mMovie!=null ) {
 			var LastFrameCopied = mMovie.GetLastFrameCopiedMs ();
 			if (LastFrameCopied != 0)
 				OnMovieFrameReady ();
 		}
 	}
-
-	bool HaveAppliedTexture()
-	{
-		return mTarget.material.mainTexture == mStreamTextures[0];
-	}
-
+	
 	void OnMovieFrameReady()
 	{
 		mTarget.material.mainTexture = mStreamTextures[0];
+		mStarted = true;
 
 		if (mOnStarted != null)
 			mOnStarted.Invoke ();

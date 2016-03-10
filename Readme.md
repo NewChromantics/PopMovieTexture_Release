@@ -2,7 +2,7 @@ Release notes for PopMovieTexture.
 
 Email help@popmovie.xyz for questions, feature requests, bug reports. Or submit to the issues page https://github.com/NewChromantics/PopMovieTexture_Release/issues
 
-Features for next release;
+Features coming in/completed in next release;
 =====================
  - https://github.com/NewChromantics/PopMovieTexture_Release/issues?q=is%3Aissue+is%3Aopen+label%3A%22NEXT+RELEASE+FEATURE%22
 
@@ -17,12 +17,13 @@ Cross-platform Features;
 - Audio visualisation to aid audio debugging
 - NO additional DLL's required.
 - Works in editor!
-- Lots of options for tweaking performance/working around issues
+- Lots of options for tweaking performance & specific video problems
 - Not limited to one video at a time
 - Synchronised .srt(subtitle file) parser.
 - Can Enumerate sources to list all videos, cameras, devices, windows that can be used with the plugin
 - Can be used independently of unity with the C interface or as an osx framework (enquire within for details)
 - Various image format support
+- Realtime Window capture on windows & osx
 
 Specific OS Features;
 ======================
@@ -51,6 +52,7 @@ Specific OS Features;
 	- Hardware video decoding (currently only via MediaFoundation)
 	- window: protocol allows capturing contents of other windows
 	- video camera/webcam support
+	- Robust seeking forwards & backwards
 
 
 Known issues; (see issue tracker for most recent bugs/fixes)
@@ -90,10 +92,10 @@ Todo/Work in progress;
 	- HTTP/Websocket file streaming (WIP)
 	- HLS streaming (parser done, working on cross platform mpeg2ts decoder)
 	- DASH streaming
-	- Explicit animated .gif support (WIP)
+	- Explicit animated .gif support (Experimental)
 	- Audio re-sampling
 	- More modular C# interface
-	- Rewind/reverse seeking (WIP)
+	- Rewind/reverse seeking (Currently windows only)
 	- Gapless playlisting
 	- Frame-level-control (instead of time)
 	- More stats on decoding/downloading/playback speeds/rates

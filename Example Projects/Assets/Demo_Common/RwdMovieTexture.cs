@@ -23,26 +23,7 @@ public class RwdMovieTexture : MonoBehaviour {
 	private float				mInternalCreateDelay = 0;
 	public bool					mLooping = true;
 
-
-	public float				mPreSeekSecs = 0;
-	public bool					mSkipPushFrames = false;
-	public bool					mSkipPopFrames = true;
-	public bool					mAllowGpuColourConversion = true;
-	public bool					mAllowCpuColourConversion = false;
-	public bool					mPixelClientStorage = false;
-	public bool					mAllowSlowCopy = true;
-	public bool					mAllowFastCopy = true;
-	public bool					mDebugFrameSkipping = true;
-	public bool					mPeekBeforeDefferedCopy = true;
-	public bool					mDebugNoNewPixelBuffer = false;		//	print out when there is no frame to pop. Useful if frames aren't appearing with no error
-	public bool					mDebugRenderThreadCallback = false;	//	turn on to show that unity is calling the plugin's graphics thread callback (essential for multithreaded rendering, and often is a problem with staticcly linked plugins - like ios)
-	public bool					mResetInternalTimestamp = false;	//	if your source video's timestamps don't start at 0, this resets them so the first frame becomes 0
-	public bool					mDebugBlit = false;
-	public bool					mApplyVideoTransform = true;
-	public bool					mGenerateMipMaps = false;
-	public bool					mPopNearestFrame = false;
-	public bool					mStretchToFillTexture = true;
-	public bool					mDecoderUseHardwareBuffer = true;
+	public PopMovieParams		MovieParams;
 
 
 	public String filename = "/sdcard/Test.mp4";
@@ -76,33 +57,14 @@ public class RwdMovieTexture : MonoBehaviour {
 
 		DebugLog ("Creating movie...");
 
-		PopMovieParams Params = new PopMovieParams ();
-		Params.mPreSeekMs = (ulong)(mPreSeekSecs * 1000.0f);
-		Params.mSkipPushFrames = mSkipPushFrames;
-		Params.mSkipPopFrames = mSkipPopFrames;
-		Params.mAllowGpuColourConversion = mAllowGpuColourConversion;
-		Params.mAllowCpuColourConversion = mAllowCpuColourConversion;
-		Params.mPixelClientStorage = mPixelClientStorage;
-		Params.mAllowFastCopy = mAllowFastCopy;
-		Params.mAllowSlowCopy = mAllowSlowCopy;
-		Params.mDebugFrameSkipping = mDebugFrameSkipping;
-		Params.mPeekBeforeDefferedCopy = mPeekBeforeDefferedCopy;
-		Params.mDebugNoNewPixelBuffer = mDebugNoNewPixelBuffer;
-		Params.mDebugRenderThreadCallback = mDebugRenderThreadCallback;
-		Params.mResetInternalTimestamp = mResetInternalTimestamp;
-		Params.mDebugBlit = mDebugBlit;
-		Params.mApplyVideoTransform = mApplyVideoTransform;
-		Params.mPopNearestFrame = mPopNearestFrame;
-		Params.mGenerateMipMaps = mGenerateMipMaps;
-		Params.mStretchImage = mStretchToFillTexture;
-		Params.mDecoderUseHardwareBuffer = mDecoderUseHardwareBuffer;
-
 		try
 		{
-			mMovie = new PopMovie (filename, Params, true );
+			mMovie = new PopMovie (filename, MovieParams );
 			if ( mEnableDebugLog )
-				mMovie.AddDebugCallback( DebugLog );
-			mMovie.AddOnFinishedCallback( OnFinished );
+				PopMovie.EnableDebugLog = mEnableDebugLog;
+
+			//	gr: temporarily removed from PopMovie, should be moved to your own controller
+			//mMovie.AddOnFinishedCallback( OnFinished );
 		}
 		catch (System.Exception e)
 		{

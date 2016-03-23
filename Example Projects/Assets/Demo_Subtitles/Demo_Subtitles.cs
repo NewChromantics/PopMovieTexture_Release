@@ -19,8 +19,8 @@ public class Demo_Subtitles : MonoBehaviour {
 		try
 		{
 			PopMovieParams Params = new PopMovieParams ();
-			mMovie = new PopMovie (mFilename, Params, false);
-			mMovie.AddDebugCallback (Debug.Log);
+			mMovie = new PopMovie (mFilename, Params);
+			PopMovie.EnableDebugLog = true;
 		}
 		catch(System.Exception e)
 		{

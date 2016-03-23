@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class MovieController : MonoBehaviour {
 
-	public bool					mGenerateMipMaps = false;
+	public PopMovieParams		MovieParameters;
 	public bool					mEnablePixelClientStorageOsx = true;		
 	public MeshRenderer			mTarget;
 	public PopMovie				mMovie;
@@ -22,6 +22,10 @@ public class MovieController : MonoBehaviour {
 
 	private List<string>		mFilenameQueue;
 	private bool				mStarted = false;
+
+	public float				MovieTime = 0;
+	[Range(0,3)]
+	public float				MovieTimeScalar = 1;
 
 	
 	public void StartMovie()
@@ -75,6 +79,12 @@ public class MovieController : MonoBehaviour {
 
 		//	see if movie is finished to move onto next
 		if (mMovie != null) {
+
+			//	update time
+			MovieTime += Time.deltaTime * MovieTimeScalar;
+			mMovie.SetTime (MovieTime);
+
+
 			//	check duration
 			var Duration = mMovie.GetDurationMs();
 			var CurrentTime = mMovie.GetTimeMs();
@@ -102,15 +112,11 @@ public class MovieController : MonoBehaviour {
 			var Filename = mFilenameQueue [0];
 			mFilenameQueue.RemoveAt (0);
 
-			var Params = new PopMovieParams ();
-			Params.mGenerateMipMaps = mGenerateMipMaps;
-			Params.mPixelClientStorage = mEnablePixelClientStorageOsx;
-			//Params.mSkipPushFrames = true;
 			try {
-				mMovie = new PopMovie (Filename, Params, true);
+				mMovie = new PopMovie (Filename, MovieParameters);
 				
 				if (mEnableDebugLog)
-					mMovie.AddDebugCallback (Debug.Log);
+					PopMovie.EnableDebugLog = true;
 			} catch (System.Exception e) {
 				Debug.LogError ("Error creating movie; " + e.Message);
 				if (mErrorText != null)
@@ -174,3 +180,4 @@ public class MovieController : MonoBehaviour {
 	}
 
 }
+

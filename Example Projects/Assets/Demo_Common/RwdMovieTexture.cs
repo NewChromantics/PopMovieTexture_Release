@@ -168,8 +168,6 @@ public class RwdMovieTexture : MonoBehaviour {
 		
 		//	draw some other debug
 		String Text = "";
-		Text += "Codec: " + mMovie.GetCodec () + "\n";
-		Text += "Error: " + mMovie.GetFatalError () + "\n";
 		Text += "Last Frame Requested: " + mMovie.GetTimeMs() + "\n";
 		Text += "Last Frame Copied: " + mMovie.GetLastFrameCopiedMs() + "\n";
 		Text += "OutOfSync: " + ((long)mMovie.GetLastFrameCopiedMs() - (long)mMovie.GetTimeMs()) + "\n";

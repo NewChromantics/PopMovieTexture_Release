@@ -54,6 +54,12 @@ Specific OS Features;
 	- video camera/webcam support
 	- Robust seeking forwards & backwards
 
+Demo Projects
+======================
+![Demo_Movie Screenshot](/Docs/Demo_Movie.png)
+##Demo_Movie
+Demo_Movie plays the clip from Dr.Strangelove, from the streaming assets folder to an image which is displayed in a GUI. There is an additional script which creates another PopMovie instance which attempts to load a .srt(subtitle) file in the same path. If it succeeds, it synchronises (in the demo's case it's 3 and a half minutes out, as the video has been clipped but the subtitles are still for the full movie) the subtitle "movie" with the playing movie and displays the current frame's subtitle to a text GUI element.
+There is also a slider in the gui which controls the MovieTimeScalar to allow you to speed-up & slow down the movie whilst it's playing.
 
 Known issues; (see issue tracker for most recent bugs/fixes)
 ======================

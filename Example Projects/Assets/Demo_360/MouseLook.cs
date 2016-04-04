@@ -31,6 +31,8 @@ public class MouseLook : MonoBehaviour {
 
 	static public bool UsingVr()
 	{
+		//	vr exists from 5.1 onwards
+#if UNITY_5_1
 		if (UnityEngine.VR.VRSettings.loadedDevice == UnityEngine.VR.VRDeviceType.None)
 			return false;
 
@@ -39,6 +41,9 @@ public class MouseLook : MonoBehaviour {
 			return false;
 
 		return true;
+#else
+		return false;
+#endif
 	}
 
 

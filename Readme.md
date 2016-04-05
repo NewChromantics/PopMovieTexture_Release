@@ -1,7 +1,10 @@
 Release notes for PopMovieTexture.
 
-Email graham@newchromantics.com for questions, feature requests, bug reports. (Or use  github's issues https://github.com/NewChromantics/PopMovieTexture_Release)
+Email help@popmovie.xyz for questions, feature requests, bug reports. Or submit to the issues page https://github.com/NewChromantics/PopMovieTexture_Release/issues
 
+Features coming in/completed in next release;
+=====================
+ - https://github.com/NewChromantics/PopMovieTexture_Release/issues?q=is%3Aissue+is%3Aopen+label%3A%22NEXT+RELEASE+FEATURE%22
 
 Cross-platform Features;
 =====================
@@ -14,11 +17,13 @@ Cross-platform Features;
 - Audio visualisation to aid audio debugging
 - NO additional DLL's required.
 - Works in editor!
-- Lots of options for tweaking performance/working around issues
+- Lots of options for tweaking performance & specific video problems
 - Not limited to one video at a time
 - Synchronised .srt(subtitle file) parser.
 - Can Enumerate sources to list all videos, cameras, devices, windows that can be used with the plugin
-- Can be used independently of unity with the C interface (enquire within for details)
+- Can be used independently of unity with the C interface or as an osx framework (enquire within for details)
+- Various image format support
+- Realtime Window capture on windows & osx
 
 Specific OS Features;
 ======================
@@ -46,7 +51,15 @@ Specific OS Features;
 	- DirectX 11 support
 	- Hardware video decoding (currently only via MediaFoundation)
 	- window: protocol allows capturing contents of other windows
+	- video camera/webcam support
+	- Robust seeking forwards & backwards
 
+Demo Projects
+======================
+![Demo_Movie Screenshot](/Docs/Demo_Movie.png)
+##Demo_Movie
+Demo_Movie plays the clip from Dr.Strangelove, from the streaming assets folder to an image which is displayed in a GUI. There is an additional script which creates another PopMovie instance which attempts to load a .srt(subtitle) file in the same path. If it succeeds, it synchronises (in the demo's case it's 3 and a half minutes out, as the video has been clipped but the subtitles are still for the full movie) the subtitle "movie" with the playing movie and displays the current frame's subtitle to a text GUI element.
+There is also a slider in the gui which controls the MovieTimeScalar to allow you to speed-up & slow down the movie whilst it's playing.
 
 Known issues; (see issue tracker for most recent bugs/fixes)
 ======================
@@ -70,7 +83,6 @@ Known issues; (see issue tracker for most recent bugs/fixes)
 - OSX
 	- No metal support
 	- 60FPS video decodes FASTER with non-opengl backing
-	- Client-storage can be tempramental
 	- WIP stream-from-shared-memfile code (ask for details)
 	
 - Windows
@@ -86,10 +98,10 @@ Todo/Work in progress;
 	- HTTP/Websocket file streaming (WIP)
 	- HLS streaming (parser done, working on cross platform mpeg2ts decoder)
 	- DASH streaming
-	- Explicit .gif support
+	- Explicit animated .gif support (Experimental)
 	- Audio re-sampling
 	- More modular C# interface
-	- Rewind/reverse seeking
+	- Rewind/reverse seeking (Currently windows only)
 	- Gapless playlisting
 	- Frame-level-control (instead of time)
 	- More stats on decoding/downloading/playback speeds/rates
@@ -100,7 +112,7 @@ Todo/Work in progress;
 	- Stream kinect skeletons to unity (as text/json stream)
 	- Built in kinect auto-alignment (detect floor plane and stream camera extrinsics to unity)
 	- Hardware(pixel shader) kinect depth alignment
-	- Depth map cleanup (noise reduction, hole filling)
+	- Depth map cleanup (noise reduction, hole filling) for kinect
 	- Window interaction (cross platform method to send mouse clicks, keyboard input etc)
 	
 - IOS & OSX

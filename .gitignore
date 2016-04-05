@@ -1,10 +1,14 @@
+# ignore imported popmovie plugin
+**/Assets/PopMovieTexture
+**/Assets/Plugins
+
+
 # build temp
 *.apk
 *.obb
 
 
 **/Assets/StreamingAssets/*
-**/Assets/Plugins
 
 [Ll]ibrary/
 [Tt]emp/

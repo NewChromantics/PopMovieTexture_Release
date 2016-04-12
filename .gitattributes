@@ -1,0 +1,4 @@
+# force some unity text files to LF endings
+*.meta text eol=lf
+*.cs text eol=lf
+

@@ -945,6 +945,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1062,7 +1063,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2043027817}
+      - m_Target: {fileID: 0}
         m_MethodName: SetSpeed
         m_Mode: 0
         m_Arguments:
@@ -1662,6 +1663,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1 &1597148678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1597148680}
+  - 114: {fileID: 1597148679}
+  m_Layer: 0
+  m_Name: PlaybackControls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1597148679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597148678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba6d1e8fbecee1479456110ab49670a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeSlider: {fileID: 2043027816}
+  Movie: {fileID: 1770526078}
+  PlayButton: {fileID: 1899412052}
+  PauseButton: {fileID: 1435068976}
+  StopButton: {fileID: 629706918}
+  SkipFwdButton: {fileID: 351229165}
+  SkipBwdButton: {fileID: 1679976469}
+  SpeedSlider: {fileID: 565189592}
+  ResetSpeedButton: {fileID: 148127017}
+  CurrentTimeText: {fileID: 2016145526}
+  SkipAmount: 10
+--- !u!4 &1597148680
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597148678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &1638715705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1963,7 +2014,7 @@ MonoBehaviour:
     ApplyVideoTransform: 1
     GenerateMipMaps: 0
     PopNearestFrame: 0
-    DebugTimers: 0
+    DebugTimers: 1
     DecoderUseHardwareBuffer: 1
     BlitFatalErrors: 1
     ForceNonPlanarOutput: 0
@@ -1973,7 +2024,7 @@ MonoBehaviour:
     OnlyExtractKeyframes: 0
     ApplyHeightPadding: 1
     WindowIncludeBorders: 1
-    HighPrecisionAudio: 0
+    HighPrecisionAudio: 1
     DebugAudio: 0
   PlayOnAwake: 1
   Playing: 0
@@ -1983,7 +2034,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   AudioStream: 0
-  EnableDebugLog: 0
+  EnableDebugLog: 1
 --- !u!4 &1770526079
 Transform:
   m_ObjectHideFlags: 0
@@ -2480,7 +2531,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 2043027815}
   - 114: {fileID: 2043027816}
-  - 114: {fileID: 2043027817}
   m_Layer: 5
   m_Name: Time Slider
   m_TagString: Untagged
@@ -2556,28 +2606,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &2043027817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2043027814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ba6d1e8fbecee1479456110ab49670a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimeSlider: {fileID: 2043027816}
-  Movie: {fileID: 1770526078}
-  PlayButton: {fileID: 1899412052}
-  PauseButton: {fileID: 1435068976}
-  StopButton: {fileID: 629706918}
-  SkipFwdButton: {fileID: 351229165}
-  SkipBwdButton: {fileID: 1679976469}
-  SpeedSlider: {fileID: 565189592}
-  ResetSpeedButton: {fileID: 148127017}
-  CurrentTimeText: {fileID: 2016145526}
-  SkipAmount: 10
 --- !u!1 &2115638310
 GameObject:
   m_ObjectHideFlags: 0

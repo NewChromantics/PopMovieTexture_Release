@@ -2360,7 +2360,7 @@ MonoBehaviour:
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 30
     m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -2425,7 +2425,7 @@ MonoBehaviour:
     ApplyVideoTransform: 1
     GenerateMipMaps: 0
     PopNearestFrame: 0
-    DebugTimers: 1
+    DebugTimers: 0
     DecoderUseHardwareBuffer: 1
     BlitFatalErrors: 1
     ForceNonPlanarOutput: 0
@@ -3266,7 +3266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 3
-  m_AspectRatio: 1.3
+  m_AspectRatio: 1.325
 --- !u!1 &2145373349
 GameObject:
   m_ObjectHideFlags: 0

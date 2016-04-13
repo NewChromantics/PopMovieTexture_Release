@@ -30,7 +30,6 @@ public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         SkipBwdButton.onClick.AddListener(SkipBwd);
         SkipFwdButton.onClick.AddListener(SkipFwd);
         ResetSpeedButton.onClick.AddListener(ResetMovieSpeed);
-        StartCoroutine(IEUpdateClock());
         Duration = Movie.Movie.GetDuration();
         TimeSlider.maxValue = Duration;
     }
@@ -45,27 +44,19 @@ public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         { 
             CurrentTime = Movie.Movie.GetTime();
             UpdateTimeSlider();
-        }        
-    }
-
-    IEnumerator IEUpdateClock()
-    {
-        while (true)
-        { 
-            if (Movie.Playing)
-            {
-                TimeSpan t = TimeSpan.FromSeconds(CurrentTime);
-				CurrentTimeText.text = string.Format("{0:D2}:{1:D2}:{2:D3}",
-                t.Minutes,
-					t.Seconds,
-					t.Milliseconds);
-            }
-            yield return new WaitForSeconds(1.0f/50.0f);
         }
-    }
 
-    public void OnBeginDrag(PointerEventData _EventData)
-    {
+		if (CurrentTimeText != null) {
+			TimeSpan t = TimeSpan.FromSeconds (CurrentTime);
+			CurrentTimeText.text = string.Format ("{0:D2}:{1:D2}:{2:D3}",
+				t.Minutes,
+				t.Seconds,
+				t.Milliseconds);
+		}
+    }
+		
+	public void OnBeginDrag(PointerEventData _EventData)
+	{
         UpdateSliderValue = false;
     }
 
@@ -76,13 +67,13 @@ public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 
     public void OnEndDrag(PointerEventData _EventData)
     {
-        Movie.MovieTime = TimeSlider.value;
+		Movie.MovieTime = TimeSlider.value;
         UpdateSliderValue = true;
     }
 
     public void OnPointerDown(PointerEventData _EventData)
     {
-        UpdateSliderValue = false;
+		UpdateSliderValue = false;
         Movie.MovieTime = TimeSlider.value;
         UpdateSliderValue = true;
     }
@@ -103,6 +94,7 @@ public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, 
             UpdateSliderValue = false;
             Movie.Pause();
         }
+
     }
 
     void Stop()

@@ -60,7 +60,7 @@ public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 					t.Seconds,
 					t.Milliseconds);
             }
-            yield return new WaitForSeconds(1.0f/30.0f);
+            yield return new WaitForSeconds(1.0f/50.0f);
         }
     }
 

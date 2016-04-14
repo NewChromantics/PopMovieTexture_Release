@@ -4,108 +4,108 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
 
-public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+public class PlaybackControls : MonoBehaviour
 {
-    public Slider TimeSlider;
     public PopMovieSimple Movie;
-    public Button PlayButton;
-    public Button PauseButton;
-    public Button StopButton;
-    public Button SkipFwdButton;
-    public Button SkipBwdButton;
+	public TimeSliderControl TimeSlider;
     public Slider SpeedSlider;
-    public Button ResetSpeedButton;
-    public Text CurrentTimeText;
+	public AspectRatioFitter MovieAspectRatio;
+
+	public Text CurrentTimeText;
     [Header("Amount to skip ahead")]
     public float SkipAmount = 10;
-    float Duration;
-    float CurrentTime;
-    bool UpdateSliderValue = true;
 
-    void Start()
-    {
-        PlayButton.onClick.AddListener(Play);
-        PauseButton.onClick.AddListener(Pause);
-        StopButton.onClick.AddListener(Stop);
-        SkipBwdButton.onClick.AddListener(SkipBwd);
-        SkipFwdButton.onClick.AddListener(SkipFwd);
-        ResetSpeedButton.onClick.AddListener(ResetMovieSpeed);
-        Duration = Movie.Movie.GetDuration();
-        TimeSlider.maxValue = Duration;
-    }
+	public GameObject	SkipForwardButton;
+	public GameObject	SkipBackwardButton;
+
+	bool Initialised = false;
+ 
 
     void Update()
     {
-        if (!Movie.Playing)
-        {
-            UpdateSliderValue = false;
-        }
-        if (UpdateSliderValue)
-        { 
-            CurrentTime = Movie.Movie.GetTime();
-            UpdateTimeSlider();
-        }
-
+		if (!Initialised)
+			OnMovieChanged ();
+			
 		if (CurrentTimeText != null) {
+
+			float CurrentTime = Movie.MovieTime;
+
 			TimeSpan t = TimeSpan.FromSeconds (CurrentTime);
 			CurrentTimeText.text = string.Format ("{0:D2}:{1:D2}:{2:D3}",
 				t.Minutes,
 				t.Seconds,
 				t.Milliseconds);
 		}
+
     }
 		
-	public void OnBeginDrag(PointerEventData _EventData)
+	public void OnMovieChanged()
 	{
-        UpdateSliderValue = false;
+		if (Movie.Movie == null)
+			return;
+
+		var Meta = Movie.Movie.GetMeta ();
+		bool CanSkip = Meta.CanSeekBackwards;
+
+		bool DurationInitialised = false;
+		bool RatioInitialised = false;
+
+		//	duration of 0 is unknown (still loading or a live stream)
+		float Duration = Movie.Movie.GetDurationMs();
+		if (Duration != 0) {
+			DurationInitialised = true;
+		}				
+
+		if ( TimeSlider != null )
+			TimeSlider.gameObject.SetActive (DurationInitialised);
+
+
+
+		if (MovieAspectRatio != null) {
+			
+			//	sometimes video isn't first stream!
+			var Width0 = Meta.Stream0_Width;
+			var Height0 = Meta.Stream0_Height;
+			var Width1 = Meta.Stream1_Width;
+			var Height1 = Meta.Stream1_Height;
+
+			if (Width0 != 0 && Height0 != 0) {
+				MovieAspectRatio.aspectRatio = Width0 / (float)Height0;
+				RatioInitialised = true;
+			}
+
+			if (Width1 != 0 && Height1 != 0) {
+				MovieAspectRatio.aspectRatio = Width1 / (float)Height1;
+				RatioInitialised = true;
+			}
+		}
+
+		if (SkipForwardButton != null)
+			SkipForwardButton.SetActive (CanSkip);
+
+		if (SkipBackwardButton != null)
+			SkipBackwardButton.SetActive (CanSkip);
+		
+		Initialised = DurationInitialised && RatioInitialised;
+	}
+
+	public void Play()
+    {
+		Movie.Play();
     }
 
-    public void OnDrag(PointerEventData _EventData)
+	public void Pause()
     {
-        Movie.MovieTime = TimeSlider.value;
+		Movie.Pause();
     }
 
-    public void OnEndDrag(PointerEventData _EventData)
+	public void Stop()
     {
-		Movie.MovieTime = TimeSlider.value;
-        UpdateSliderValue = true;
-    }
+		Movie.Stop();
 
-    public void OnPointerDown(PointerEventData _EventData)
-    {
-		UpdateSliderValue = false;
-        Movie.MovieTime = TimeSlider.value;
-        UpdateSliderValue = true;
-    }
-
-    void Play()
-    {
-        if (!Movie.Playing)
-        {
-            UpdateSliderValue = true;
-            Movie.Play();
-        }
-    }
-
-    void Pause()
-    {
-        if (Movie.Playing)
-        {
-            UpdateSliderValue = false;
-            Movie.Pause();
-        }
-
-    }
-
-    void Stop()
-    {
-        if (Movie.Playing)
-        {
-            UpdateSliderValue = false;
-            Movie.Stop();
-            Movie.MovieTime = 0;
-            UpdateTimeSlider();
-        }
+		//	do an explicit texture update so in the render loop it will copy the first frame to the screen
+		Movie.UpdateTextures ();
+		Movie.MovieTime = 0;
     }
 
     public void SetSpeed(float SpeedScalar)
@@ -115,35 +115,30 @@ public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, 
 			Movie.MovieTimeScalar = SpeedScalar;
 		}
     }
-
-    void UpdateTimeSlider()
-    {
-        TimeSlider.value = Movie.MovieTime;
-    }
-
-    void ResetMovieSpeed()
+		
+	public void ResetMovieSpeed()
     {
         Movie.MovieTimeScalar = 1;
         UpdateSpeedSlider();
     }
 
-    void UpdateSpeedSlider()
+	public void UpdateSpeedSlider()
     {
         SpeedSlider.value = Movie.MovieTimeScalar;
     }
 
-    void SkipFwd()
+    public void SkipFwd()
     {
         float NewTime = Movie.MovieTime + SkipAmount;
+		var Duration = Movie.Movie.GetDuration ();
         if (NewTime > Duration)
         {
             NewTime = Duration;
         }
         Movie.MovieTime = NewTime;
-        UpdateTimeSlider();
     }
 
-    void SkipBwd()
+	public void SkipBwd()
     {
         float NewTime = Movie.MovieTime - SkipAmount;
         if (NewTime < 0)
@@ -152,4 +147,12 @@ public class PlaybackControls : MonoBehaviour, IBeginDragHandler, IDragHandler, 
         }
         Movie.MovieTime = NewTime;
     }
+
+	public void SetPlaybackSpeed(float SpeedScalar)
+	{
+		if ( Movie != null )
+		{
+			Movie.MovieTimeScalar = SpeedScalar;
+		}
+	}
 }

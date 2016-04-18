@@ -1082,7 +1082,6 @@ MonoBehaviour:
     OnlyExtractKeyframes: 0
     ApplyHeightPadding: 1
     WindowIncludeBorders: 1
-    HighPrecisionAudio: 0
     DebugAudio: 0
 --- !u!4 &581356307
 Transform:
@@ -2554,7 +2553,6 @@ GameObject:
   - 4: {fileID: 1770526079}
   - 114: {fileID: 1770526078}
   - 82: {fileID: 1770526080}
-  - 114: {fileID: 1770526081}
   m_Layer: 0
   m_Name: PopMovieSimple
   m_TagString: Untagged
@@ -2605,7 +2603,6 @@ MonoBehaviour:
     OnlyExtractKeyframes: 0
     ApplyHeightPadding: 1
     WindowIncludeBorders: 1
-    HighPrecisionAudio: 1
     DebugAudio: 0
   PlayOnAwake: 1
   Playing: 0
@@ -2702,17 +2699,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &1770526081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1770526077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: beb483d63d1b74e1aad6eff7bac89b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1839082974
 GameObject:
   m_ObjectHideFlags: 0

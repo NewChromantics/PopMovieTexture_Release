@@ -45,6 +45,8 @@ public class PlaybackControls : MonoBehaviour
 			return;
 
 		var Meta = Movie.Movie.GetMeta ();
+		if (Meta == null)
+			return;
 		bool CanSkip = Meta.CanSeekBackwards;
 
 		bool DurationInitialised = false;

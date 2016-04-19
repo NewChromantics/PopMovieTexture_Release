@@ -1,126 +1,123 @@
-Release notes for PopMovieTexture.
+#PopMovie
 
-Email help@popmovie.xyz for questions, feature requests, bug reports. Or submit to the issues page https://github.com/NewChromantics/PopMovieTexture_Release/issues
+##High performance, cross-platform, Movie-Texture plugin for Unity.
 
-Features coming in/completed in next release;
-=====================
- - https://github.com/NewChromantics/PopMovieTexture_Release/issues?q=is%3Aissue+is%3Aopen+label%3A%22NEXT+RELEASE+FEATURE%22
++ [www.PopMovie.xyz](http://www.popmovie.xyz)
++ Coming soon to [The Unity asset store](https://www.assetstore.unity3d.com/#!/content/59097).
++ A free watermarked demo, and the latest beta releases are [availible to download on Github](https://github.com/NewChromantics/PopMovieTexture_Release/releases)
++ Direct [link to watermarked .UnityPackage](https://github.com/NewChromantics/PopMovieTexture_Release/releases/download/v0.1.4.9697319/PopMovieTexture.unitypackage)
++ We welcome all questions, bug reports &amp; feature requests (some features may already exist and be hidden), simply [email us at help@popmovie.xyz](mailto:help@popmovie.xyz), send me a tweet to [@soylentgraham](http://www.twitter.com/soylentgraham) or post an issue to our [github issues page](https://github.com/NewChromantics/PopMovieTexture_Release/issues)
++ Supports iOS, Android, Windows & OSX. Virtual Reality, common movie files, subtitle(.srt) files, images, Kinects, webcams & cameras, window streaming.
++ Detailed release notes for all public releases dating back to December 2015 are on the [Github releases page](https://github.com/NewChromantics/PopMovieTexture_Release/releases)
++ Unity example projects for the latest release (sometimes more examples than in the store) are [on the github page](https://github.com/NewChromantics/PopMovieTexture_Release/tree/master/Example%20Projects). We welcome pull requests and demo submissions!
 
-Cross-platform Features;
-=====================
-- Does as little work in render thread as possible so all platforms can achieve >=60fps
-- Multi track support
-- Streams audio to AudioSource to allow customisation/positional audio
-- No platform specific C# code (Same code in unity for all platforms)
-- Very precise sync to allow synchronisation with external audio (as well as sync with audio in movies)
-- Performance graph textures which show lag in decoding & aid debugging
-- Audio visualisation to aid audio debugging
-- NO additional DLL's required.
-- Works in editor!
-- Lots of options for tweaking performance & specific video problems
-- Not limited to one video at a time
-- Synchronised .srt(subtitle file) parser.
-- Can Enumerate sources to list all videos, cameras, devices, windows that can be used with the plugin
-- Can be used independently of unity with the C interface or as an osx framework (enquire within for details)
-- Various image format support
-- Realtime Window capture on windows & osx
+Cross-platform Features
+===
++ Does as little work in render thread as possible so all platforms can achieve >=60fps
++ Multi track support
++ Streams audio to AudioSource to allow customisation/positional audio
++ No platform specific C# code (Same code in unity for all platforms)
++ Very precise sync to allow synchronisation with external audio (as well as sync with audio in movies)
++ Performance graph textures which show lag in decoding & aid debugging
++ Audio visualisation to aid audio debugging
++ NO additional DLL's required.
++ Works in editor!
++ Lots of options for tweaking performance & specific video problems
++ Not limited to one video at a time
++ Synchronised .srt(subtitle file) parser.
++ Can Enumerate sources to list all videos, cameras, devices, windows that can be used with the plugin
++ Can be used independently of unity with the C interface or as an osx framework (enquire within for details)
++ Various image format support (GIF, TGA, PNG, BMP, PSD)
++ Realtime Window capture on windows & osx
 
-Specific OS Features;
-======================
-- Android
-	- OpenGL ES 2 & 3.
-	- Video decoding with or without opengl surface backing.
-	- Load files from APK (streaming assets), OBB files(patches), non-compressed zip/jars, persistent data, or anywhere accessible by file system (eg. sd card)
-	- Multithread rendering support
-	- Multiple track support (except mpegts files, see issues)
+Specific OS Features
+===
++ Android
+ + OpenGL ES 2 & 3.
+ + Video decoding with or without opengl surface backing.
+ + Load files from APK (streaming assets), OBB files(patches), non-compressed zip/jars, persistent data, or anywhere accessible by file system (eg. sd card)
+ + Multithread rendering support
+ + Multiple track support (except mpegts files, see issues)
 
-- Ios
-	- OpenGL ES 2 & 3
-	- Video decoding with or without opengl surface backing.
++ Ios
+ + OpenGL ES 2 & 3 (Metal coming soon)
+ + Video decoding with or without opengl surface backing.
+ + File seeking forwards & backwards where supported
 
-- OSX
-	- Hardware video decoding
-	- Multiple video & audio track support
-	- Initial audio streaming support
-	- KinectV1 support
-	- Video camera support
-	- window: protocol allows capturing contents of other windows
++ OSX
+ + OpenGL (legacy and 5.3 GLCore) support (metal coming soon)
+ + Hardware video decoding
+ + Multiple video & audio track support
+ + Audio support
+ + KinectV1 support
+ + Video camera support
+ + window: protocol allows capturing contents of other windows
+ + File seeking forwards & backwards where supported
 
-- Windows
-	- OpenGL support
-	- DirectX 11 support
-	- Hardware video decoding (currently only via MediaFoundation)
-	- window: protocol allows capturing contents of other windows
-	- video camera/webcam support
-	- Robust seeking forwards & backwards
++ Windows
+ + OpenGL (legacy and 5.3 GLCore) support
+ + DirectX 11 support
+ + Hardware video decoding (currently via MediaFoundation)
+ + window: protocol allows capturing contents of other windows
+ + video camera/webcam support
+ + File seeking forwards & backwards where supported
 
-Demo Projects
-======================
-![Demo_Movie Screenshot](/Docs/Demo_Movie.png)
-##Demo_Movie
-Demo_Movie plays the clip from Dr.Strangelove, from the streaming assets folder to an image which is displayed in a GUI. There is an additional script which creates another PopMovie instance which attempts to load a .srt(subtitle) file in the same path. If it succeeds, it synchronises (in the demo's case it's 3 and a half minutes out, as the video has been clipped but the subtitles are still for the full movie) the subtitle "movie" with the playing movie and displays the current frame's subtitle to a text GUI element.
-There is also a slider in the gui which controls the MovieTimeScalar to allow you to speed-up & slow down the movie whilst it's playing.
+Quick start guide
+===
+We have provided some simple movie playback components with full power, but lots of common code written for you. If you want much more refined control, or want to handle multiple video & audio streams, consider writing your own (even using `PopMovieSimple` as a base), the interface is still quite simple!
 
-Known issues; (see issue tracker for most recent bugs/fixes)
-======================
-- Android
-	- Audio needs resampling from android project-default of 24000hz (Set your project audio settings to match the audio rate!)
-	- Files in APK limited to ~250mb (reports "file not found")
-	- To split with ffmpeg 
-		- __ffmpeg -i long.mp4 -vcodec copy -acodec copy -ss 0 -t 50 short_0_50.mp4__
-		- __ffmpeg -i long.mp4 -vcodec copy -acodec copy -ss 50 -t 100 short_50_100.mp4__
+##The simple way
++ Create a new game object in the scene and attach a `PopMovie/PopMovieSimple.cs` component
++ Create a render target texture (A normal texture2D can be used, but you must set it to be writable!) and set it on the `Target Texture` field
++ Set the `Filename` field to...
+	+ To your filename and the c# code will try and resolve it to a fully qualified path, look for it in streaming assets, or your persistent path `Yourfile.mp4`
+	+ Specifically to a special folder; `streamingassets:YourFile.mp4` or `persistentdata:YourFile.mp4`
+	+ For Android you can use `apk:YourFile.mp4` which will explicitly load from the assets (streaming assets) in the APK, or if you have a downloaded/store updated OBB file it will look in there for the latest version
+	+ Again for android, `sdcard:YourFile.mp4` looks specifically in the external storage for your file
+	+ A window-capture name `window:Notepad` or `window:*`. This is only for windows or OSX
+	+ A webcam or other device (microphone, phone camera etc) `device:isight` or `device:mic` or `device:*`
++ Play! Your file should load, auto play, and be drawn to your target texture, which you can use on a material or draw to screen, or whatever you want!
 
 
-- Ios
-	- Video camera support experimental
-	- No metal support
-	- iphone 5/4 not currently decoding (Though may just need very specific resolutions)
-	- Unity doesn't warn about H264 profiles/levels that are too high (just fails)
-	- Full 4K videos render green (or black if not using hardware backing), with no error. Even slightly smaller and it's fine.
-	- Pausing & resuming app sometimes breaks asset reader (if closed for > 5secs)
-	- 60FPS video decodes FASTER with non-opengl backing
 
-- OSX
-	- No metal support
-	- 60FPS video decodes FASTER with non-opengl backing
-	- WIP stream-from-shared-memfile code (ask for details)
-	
-- Windows
-	- DX12 untested
-	- No DX9 support
-	- Performance Graphs currently don't render
-	- Audio visualisation currently doesn't render
-	- WIP stream-from-shared-memfile code (ask for details)
+Problems and solutions
+===
+In many situations enabling debug logging with `PopMovie.EnableDebugLog` will reveal problems, or hints as to any unexpected behaviour. Please check this first!
 
-Todo/Work in progress;
-=====================
-- All platforms
-	- HTTP/Websocket file streaming (WIP)
-	- HLS streaming (parser done, working on cross platform mpeg2ts decoder)
-	- DASH streaming
-	- Explicit animated .gif support (Experimental)
-	- Audio re-sampling
-	- More modular C# interface
-	- Rewind/reverse seeking (Currently windows only)
-	- Gapless playlisting
-	- Frame-level-control (instead of time)
-	- More stats on decoding/downloading/playback speeds/rates
-	- Expose more stream meta
-	
-- Windows & OSX
-	- Shared-mem-file reading for working with drivers/3rd party apps
-	- Stream kinect skeletons to unity (as text/json stream)
-	- Built in kinect auto-alignment (detect floor plane and stream camera extrinsics to unity)
-	- Hardware(pixel shader) kinect depth alignment
-	- Depth map cleanup (noise reduction, hole filling) for kinect
-	- Window interaction (cross platform method to send mouse clicks, keyboard input etc)
-	
-- IOS & OSX
-	- Metal support (half finished)
+It may have unintelligible information though, so check the common problems below, or... submit an issue to [our GitHub issues page](http://www.github.com/NewChromantics/PopMovieTexture_release/issues/) (or check if it's a known problem)
 
-- Windows
-	- Full DX12 support
-	- Add Nvidia/Cuda/AMD specific hardware decoder support (NVDec etc)
-	
-- Android
-	- Camera support
+You can also [send us an email directly](mailto:help@popmovie.xyz). You may have a file format or weird movie encoding that we haven't come across yet.  If nothing below solves your problem, let us know and we can fix it, and update this documentation.
+
+Any relevant debug output will be extremely useful.
++ editor.log & console output
++ `adb logcat -s "Pop"` output for android
++ OS and Unity crash dumps
++ crash and console output from Xcode or devices on iOS & OS X.
+
+##My texture is a big gradient colour
++ This usually indicates a runtime error. Internal shaders may not compile on your platform, or there was a problem decoding or copying the texture, turn on debug logging and you should see a message. This is quite rare now, so please email us if you cannot fix the problem!
+
+##An exception is thrown when I create my `PopMovie` class/when `PopMovieSimple` starts
++ There was an error opening your file, or creating a decoder. Check the exception's `.message` as to what the problem is. Often the message will have OS specific errors, if these don't make sense, email us and we will try to make the errors more clear.
++ The most common cause of this is the wrong filename! Double check your spelling (remember, all files on platforms other than windows are case sensitive)
++ Streaming assets can be a special case for android. If your files are going to be in an OBB or APK, try using `apk:yourfile.mp4`.
++ see other filename prefixes in the `PopMovie` class for special handling.
+
+##My build crashes on startup or: how I learned to love DllNotFoundException
++ On OS X this is a known issue when building a 32 bit (x86) app. Although PopMovie is built as a universal binary, it's not working. You should really be building a 64bit application anyway! We understand some other restrictions could be in place though (other plugins which HAVE to be 32 bit), let us know if this is the case and we can fix this as a priority
++ Windows is also currently 64 bit only, but this will be less trouble to correct, same as above, contact us if this is a priority for you. This should yield DllNotFoundException. If we have linked PopMovie with a 32 bit Dll, or one missing from your system you may also get this error when building 64 bit, we want to fix this!
++ Android is currently only built for Armv7. If you have an x86 device, let us know and we can work with you to get it working.
++ The Android based Epsom BT moverio is a known Armv7 device that mysteriously cannot find our library at bootup.
+
+
+##My texture is quite visible, but the colours are all messed up or everything is misaligned
++ This suggests we are not merging the raw decoded image format correctly. A few options may fix, or help debug this by toggling the following options, turn off `MergeYuv`, use `Force Non-planar output`, turn off `Use Hardware decoder`, turn off `Use pixel transform`. Let us know if any of these fix, or don't fix your problem and we can look into it.
+
+##I cannot hear any audio
++ OnAudioFilterRead in unity 5.0 on OS X in-editor sometimes doesn't output any sound, even though data is there. Some things restore it like `Debug.log(AudioData[0])` or reloading scripts. Newer versions of unity don't seem to have this issue
+
+##Audio doesn't sound correct
++ If the source sample rate or channel count is different from the project's audio settings, the sound won't be remuxed and will sound slow, fast or echo'y. (some platforms try to do this automatically in the hardware AAC/MP3/etc decoder) Enable debug logging to confirm the mix-match. To fix, change the your projects audio settings or re-encode the video. (Future versions will remix the audio at runtime, but the quality may not be as good)
+
+##My problem isn't listed!
++ send us an email to [help@popmovie.xyz](mailto:help@popmovie.xyz), or [submit an issue](https://github.com/NewChromantics/PopMovieTexture_Release/releases) to the github issue tracker.

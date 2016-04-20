@@ -121,3 +121,8 @@ Any relevant debug output will be extremely useful.
 
 ##My problem isn't listed!
 + send us an email to [help@popmovie.xyz](mailto:help@popmovie.xyz), or [submit an issue](https://github.com/NewChromantics/PopMovieTexture_Release/releases) to the github issue tracker.
+
+Additional thanks
+===
++ [@JonathonForder](https://twitter.com/jonathanforder) & Dave Johnson for art and support
++ [Benji](https://twitter.com/rhodesiamonique) for the majority of the work on the new [Demo_Movie player example](https://github.com/NewChromantics/PopMovieTexture_Release/tree/master/Example%20Projects/Assets/Demo_Movie)

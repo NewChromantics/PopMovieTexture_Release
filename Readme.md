@@ -124,5 +124,5 @@ Any relevant debug output will be extremely useful.
 
 Additional thanks
 ===
-+ [@JonathonForder](https://twitter.com/jonathanforder) & Dave Johnson for art and support
++ [@JonathonForder](https://twitter.com/jonathanforder) & [@Dave Johnson](https://twitter.com/the_real_dave_j) for art and support
 + [Benji](https://twitter.com/rhodesiamonique) for the majority of the work on the new [Demo_Movie player example](https://github.com/NewChromantics/PopMovieTexture_Release/tree/master/Example%20Projects/Assets/Demo_Movie)

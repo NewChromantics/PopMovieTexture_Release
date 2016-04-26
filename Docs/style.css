@@ -6,6 +6,9 @@
 /* using first element in the menu as the header, this may backfire later when we want to move the menu */
 
 
+
+
+
 .Menu>ul,
 .Menu .level-1
 {
@@ -13,7 +16,6 @@
 	margin:0px;
 	padding: 0px;
 }
-
 
 .Header,
 .Menu #popmovie-link
@@ -94,7 +96,30 @@ body
 
 .Menu
 {
-	margin: 0 20% 0 20%;
+	xxxmargin: 0 20% 0 20%;
+}
+
+.Body
+{
+	clear:both;
+}
+
+
+.Menu li.level-1:not(#popmovie-link)
+{
+	display:block;
+	float:left;
+	margin:0px;
+	padding:4px;
+	min-height:200px;
+	width: 32%;
+}
+
+/* need class to get priority over above */
+.Menu li.level-1#additional-thanks-item
+{
+	clear:both;
+	min-height: auto;
 }
 
 code

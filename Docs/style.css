@@ -34,6 +34,21 @@
 	xxoverflow:	hidden;
 }
 
+#popmovie-link:before {
+	display:inline;
+	height:100%;
+	/* gr: using padding for min-width */
+	padding: 0px 63px 0px 0px;
+	/* code for NBSP as &nbsp; doesnt seem to work in osx chrome*/
+	content: "\00a0";
+	background-image: url(PopMovie_Icon_63x128.png);
+	xxbackground-color: red;
+	background-repeat: no-repeat;
+	background-position: right center;
+	margin-right: 1%;
+	background-size: auto 90%;
+}
+
 .Header H1,
 .Menu #popmovie-link
 {

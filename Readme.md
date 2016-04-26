@@ -17,7 +17,7 @@ Downloads
 Free Watermarked Demo package
 ---------------------------------------------
 + A free watermarked demo is [availible to download on Github](https://github.com/NewChromantics/PopMovieTexture_Release/releases). This also serves as a Beta release as the releases take longer to make it to the asset store.
-+ [Direct link to the latest watermarked .UnityPackage](https://github.com/NewChromantics/PopMovieTexture_Release/releases/download/v0.1.4.9697319/PopMovieTexture.unitypackage)
++ [Direct link to the latest watermarked .UnityPackage](https://github.com/NewChromantics/PopMovieTexture_Release/releases/download/v0.1.5.b8702b8/PopMovieTexture.unitypackage)
 
 Cross-platform Features
 ---------------------------------------------

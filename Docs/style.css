@@ -46,6 +46,9 @@
 	background-repeat: no-repeat;
 	background-position: right center;
 	margin-right: 1%;
+
+	/* center again */
+	margin-left: -63px;
 	background-size: auto 90%;
 }
 
@@ -159,4 +162,45 @@ a:active
 a:hover
 {
 	text-decoration: underline;
+}
+
+
+/* mobile changes */
+@media only screen and (max-device-width: 750px)
+{
+	body
+	{
+		margin-left:	0px;
+		margin-right:	0px;
+
+
+		/* scale header by width, not height */
+		margin-top:	22vw;
+	}
+
+	.Header,
+	.Menu #popmovie-link
+	{
+		height:		20vw;
+	}
+
+	.Header H1,
+	.Menu #popmovie-link
+	{
+		font-size:	14vw;
+	}
+
+	.Body
+	{
+		margin-left:	0px;
+		margin-right:	0px;
+	}
+
+	/* remove columns from menu */
+	.Menu li.level-1:not(#popmovie-link)
+	{
+		float:none;
+		width: 100%;
+		min-height:0;
+	}
 }

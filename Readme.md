@@ -72,7 +72,10 @@ Windows Features
 + video camera/webcam support
 + File seeking forwards & backwards where supported
 
-
+Open source! (ish)
+---------------------------------------------
+While PopMovie itself is not entirely open source, a huge amount of the code uses [SoyLib](https://github.com/SoylentGraham/SoyLib), an open source C++ library for a variety of platforms.
+We endeavour to release more and more of the code as open source as time goes on.
 
 
 Quick start guide

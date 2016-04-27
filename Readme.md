@@ -77,6 +77,17 @@ Open source! (ish)
 While PopMovie itself is not entirely open source, a huge amount of the code uses [SoyLib](https://github.com/SoylentGraham/SoyLib), an open source C++ library for a variety of platforms.
 We endeavour to release more and more of the code as open source as time goes on.
 
+Planned todo list
+---------------------------------------------
+This is a list of our high-priority upcoming features
+
++ Metal support for iOS
++ HLS streaming across all platforms
++ HAP codec support
++ Kinect & Kinect2 for windows
++ Full animated gif support
++ Stream simple files (images, subtitles) directly from HTTP
+
 
 Quick start guide
 =============================================

@@ -72,6 +72,35 @@ Windows Features
 + video camera/webcam support
 + File seeking forwards & backwards where supported
 
+Supported Platform versions & devices
+---------------------------------------------
+This is not a definitive list as the requirements and limitations can vary between devices & os, graphics card, but quite comprehensive. Corrections welcome!
+
++ Windows 7 64 bit (requires vc_redist 120. Not required from v0.1.6)
+	+ Limitations: https://msdn.microsoft.com/en-us/library/windows/desktop/dd797815(v=vs.85).aspx
++ Windows 8, 8.1, 10 64 bit build (requires vc_redist 120. Not required from v0.1.6)
++ Windows 7, 8, 8.1, 10 32 bit build (from v0.1.6)
++ Android API level 16 and above (4.1 Jelly-bean)
+	+ Limitations: http://developer.android.com/guide/appendix/media-formats.html
++ OSX 10.7+ 32bit, 64bit & universal builds
++ iPhone 5s+, iPad Air2/Retina, iPad Mini
+	+ iOS6+
+	+ h264: 4k / 60fps / High Profile level 4.1
++ iPhone 5C, 4S
+	+ iOS6+
+	+ h264: 1280x720 / 30fps / High Profile level 4.1
++ iPhone 3GS, iPad 1,2
+	+ iOS6+
+	+ h264: 1280x720 / 30fps / Baseline Profile level 3.0
++ iPad 1,2
+	+ iOS6+
+	+ h264: 1280x720 / 30fps / Main Profile level 3.0
++ iPad 1, 2 & iPhone 4,4s,5,5c
+	+ iOS6+
+	+ h264: 1280x720, Baseline 3.1, 30fps
+
+
+
 Open source! (ish)
 ---------------------------------------------
 While PopMovie itself is not entirely open source, a huge amount of the code uses [SoyLib](https://github.com/SoylentGraham/SoyLib), an open source C++ library for a variety of platforms.

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 public class MovieController : MonoBehaviour {
 
 	public PopMovieParams		MovieParameters;
-	public bool					mEnablePixelClientStorageOsx = true;		
 	public MeshRenderer			mTarget;
 	public PopMovie				mMovie;
 	public List<string>			mFilenames;
@@ -34,6 +33,7 @@ public class MovieController : MonoBehaviour {
 		mFilenameQueue = new List<string> ();
 		mFilenameQueue.AddRange (mFilenames);
 		mStarted = false;
+		MovieTime = 0;
 
 		UpdateMovie ();
 	}

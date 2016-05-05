@@ -10,9 +10,14 @@ High performance, cross-platform, Movie-Texture plugin for Unity.
 + Unity example projects for the latest release (sometimes more examples than in the store) are [on the github page](https://github.com/NewChromantics/PopMovieTexture_Release/tree/master/Example%20Projects). We welcome pull requests and demo submissions!
 + Supports iOS, Android, Windows & OSX. Virtual Reality, common movie files, subtitle(.srt) files, images, Kinects, webcams & cameras, window streaming.
 
-Downloads
+Downloads & Release Notes
 ---------------------------------------------
-+ [Download from the Unity asset store!](https://www.assetstore.unity3d.com/#!/content/59097)
+[Download from the Unity asset store!](https://www.assetstore.unity3d.com/#!/content/59097). This may not be the very latest version as submissions to the Asset store take time to approve.
+
+Below is a list of recent releases and their release notes. (The [complete history of public watermarked releases and their release notes](https://github.com/NewChromantics/PopMovieTexture_Release/releases) are on the github releases page)
++ [v0.1.5](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.5.b8702b8)
++ [v0.1.4](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.4.9697319) * Current [asset store](https://www.assetstore.unity3d.com/#!/content/59097) version
++ [v0.1.3](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.3.16f6156)
 
 Free Watermarked Demo package
 ---------------------------------------------

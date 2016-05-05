@@ -191,7 +191,7 @@ public class RwdMovieTexture : MonoBehaviour {
 		//Debug.Log ("duration=" + Duration);
 		//Debug.Log ("Time diff = " + (mRealTime - mTime));
 		
-		ulong StartTime = mMovie.GetTimeMs ();
+		uint StartTime = mMovie.GetTimeMs ();
 
 		mMovie.GetAudioBuffer (data, channels, StartTime, mAudioStreamIndex);
 	}

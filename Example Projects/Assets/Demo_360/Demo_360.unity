@@ -610,7 +610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1202912607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -982,10 +982,16 @@ MonoBehaviour:
     ForceNonPlanarOutput: 0
     MergeYuv: 1
     EnableAudioStreams: 1
+    CopyFrameAtUpdateTime: 0
+    OnlyExtractKeyframes: 0
+    ApplyHeightPadding: 1
+    WindowIncludeBorders: 1
+    DebugAudio: 0
+    Windows7Emulation: 0
   mEnablePixelClientStorageOsx: 1
   mTarget: {fileID: 439820101}
   mFilenames:
-  - streamingassets:shark_50_150_baseline3.mp4
+  - streamingassets:GrahamsFlat.mp4
   mStreamTextures:
   - {fileID: 8400000, guid: 31769ae08799a455683b676adb7bb865, type: 2}
   mPerformanceTextures: []
@@ -1539,6 +1545,7 @@ GameObject:
   - 4: {fileID: 2061410921}
   - 114: {fileID: 2061410920}
   - 82: {fileID: 2061410919}
+  - 114: {fileID: 2061410922}
   m_Layer: 0
   m_Name: MovieAudioSource
   m_TagString: Untagged
@@ -1597,7 +1604,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1608,7 +1615,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1619,7 +1626,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &2061410920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,6 +1652,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!114 &2061410922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2061410918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbe5f30e986b84e6db29ee151cfc076f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovieSource: {fileID: 0}
+  AudioStream: 0
+  AutoCreateAudioSource: 1
 --- !u!1 &2069430102
 GameObject:
   m_ObjectHideFlags: 0

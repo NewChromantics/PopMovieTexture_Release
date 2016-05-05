@@ -12,7 +12,7 @@ public class MovieAudioSource : MonoBehaviour {
 		if (Movie == null)
 			return;
 		
-		ulong StartTime = Movie.GetTimeMs ();
+		uint StartTime = Movie.GetTimeMs ();
 		Movie.GetAudioBuffer (data, Channels, StartTime, mAudioStream );
 	}
 }

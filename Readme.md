@@ -14,11 +14,12 @@ Downloads & Release Notes
 ---------------------------------------------
 [Download from the Unity asset store!](https://www.assetstore.unity3d.com/#!/content/59097). This may not be the very latest version as submissions to the Asset store take time to approve.
 
-Below is a list of recent releases and their release notes. (The [complete history of public watermarked releases and their release notes](https://github.com/NewChromantics/PopMovieTexture_Release/releases) are on the github releases page
+Below is a list of recent releases and their release notes. (The [complete history of public watermarked releases and their release notes](https://github.com/NewChromantics/PopMovieTexture_Release/releases) are on the github releases page.
 
-+ [v0.1.5](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.5.b8702b8)
-+ [v0.1.4](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.4.9697319) * Current [asset store](https://www.assetstore.unity3d.com/#!/content/59097) version
-+ [v0.1.3](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.3.16f6156)
++ v[0.1.5](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.5.b8702b8)
++ v[0.1.4](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.4.9697319)  Current [asset store](https://www.assetstore.unity3d.com/#!/content/59097) version
++ v[0.1.3](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.3.16f6156)
+
 
 Free Watermarked Demo package
 ---------------------------------------------

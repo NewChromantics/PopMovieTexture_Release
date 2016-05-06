@@ -16,6 +16,7 @@ Downloads & Release Notes
 
 Below is a list of recent releases and their release notes. (The [complete history of public watermarked releases and their release notes](https://github.com/NewChromantics/PopMovieTexture_Release/releases) are on the github releases page.
 
++ v[0.1.6](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.6.a711d51)
 + v[0.1.5](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.5.b8702b8)
 + v[0.1.4](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.4.9697319)  Current [asset store](https://www.assetstore.unity3d.com/#!/content/59097) version
 + v[0.1.3](https://github.com/NewChromantics/PopMovieTexture_Release/releases/tag/v0.1.3.16f6156)
@@ -24,7 +25,7 @@ Below is a list of recent releases and their release notes. (The [complete histo
 Free Watermarked Demo package
 ---------------------------------------------
 + A free watermarked demo is [availible to download on Github](https://github.com/NewChromantics/PopMovieTexture_Release/releases). This also serves as a Beta release as the releases take longer to make it to the asset store.
-+ [Direct link to the latest watermarked .UnityPackage](https://github.com/NewChromantics/PopMovieTexture_Release/releases/download/v0.1.5.b8702b8/PopMovieTexture.unitypackage)
++ [Direct link to the latest watermarked .UnityPackage](https://github.com/NewChromantics/PopMovieTexture_Release/releases/download/v0.1.6.a711d51/PopMovieTexture.unitypackage)
 
 Cross-platform Features
 ---------------------------------------------
@@ -83,10 +84,9 @@ Supported Platform versions & devices
 ---------------------------------------------
 This is not a definitive list as the requirements and limitations can vary between devices & os, graphics card, but quite comprehensive. Corrections welcome!
 
-+ Windows 7 64 bit (requires vc_redist 120. Not required from v0.1.6)
++ Windows 7 32 & 64 bit
 	+ Limitations: https://msdn.microsoft.com/en-us/library/windows/desktop/dd797815(v=vs.85).aspx
-+ Windows 8, 8.1, 10 64 bit build (requires vc_redist 120. Not required from v0.1.6)
-+ Windows 7, 8, 8.1, 10 32 bit build (from v0.1.6)
++ Windows 8, 8.1, 10 32 & 64 bit
 + Android API level 16 and above (4.1 Jelly-bean)
 	+ Limitations: http://developer.android.com/guide/appendix/media-formats.html
 + OSX 10.7+ 32bit, 64bit & universal builds

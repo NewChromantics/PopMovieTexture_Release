@@ -36,13 +36,13 @@ Cross-platform Features
 + Very precise sync to allow synchronisation with external audio (as well as sync with audio in movies)
 + Performance graph textures which show lag in decoding & aid debugging
 + Audio visualisation to aid audio debugging
-+ NO additional DLL's required.
++ NO additional DLL's/runtimes required. Edit: Windows now bundles Directx shader compiler for 32 & 64bit.
 + Works in editor!
 + Lots of options for tweaking performance & specific video problems
 + Not limited to one video at a time
 + Synchronised .srt(subtitle file) parser.
 + Can Enumerate sources to list all videos, cameras, devices, windows that can be used with the plugin
-+ Can be used independently of unity with the C interface or as an osx framework (enquire within for details)
++ Can be used independently of unity with the C interface or as an osx framework (enquire for details)
 + Various image format support (GIF, TGA, PNG, BMP, PSD)
 + Realtime Window capture on windows & osx
 
@@ -75,10 +75,11 @@ Windows Features
 ---------------------------------------------
 + OpenGL (legacy and 5.3 GLCore) support
 + DirectX 11 support
-+ Hardware video decoding (currently via MediaFoundation)
++ Hardware video decoding
 + window: protocol allows capturing contents of other windows
-+ video camera/webcam support
++ video camera/webcam/microphone support
 + File seeking forwards & backwards where supported
++ File-streaming from HTTP urls
 
 Supported Platform versions & devices
 ---------------------------------------------
@@ -117,12 +118,13 @@ Planned todo list
 ---------------------------------------------
 This is a list of our high-priority upcoming features
 
-+ Metal support for iOS
++ Metal support for iOS & OSX
 + HLS streaming across all platforms
 + HAP codec support
 + Kinect & Kinect2 for windows
 + Full animated gif support
 + Stream simple files (images, subtitles) directly from HTTP
++ Stream movie files from HTTP (windows already supported)
 
 
 Quick start guide
@@ -169,7 +171,7 @@ On windows and OSX PopMovie has the ability to capture window contents and displ
 
 
 Problems and solutions
-===
+=============================================
 In many situations enabling debug logging with `PopMovie.EnableDebugLog` will reveal problems, or hints as to any unexpected behaviour. Please check this first!
 
 It may have unintelligible information though, so check the common problems below, or... submit an issue to [our GitHub issues page](http://www.github.com/NewChromantics/PopMovieTexture_release/issues/) (or check if it's a known problem)

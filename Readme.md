@@ -138,7 +138,7 @@ The simple way
 	+ If using a `Texture2D` you must set this to be `writable` in the advanced settings.
 	+ If using a `RenderTexture` you must set the Depth Buffer setting to `No Depth Buffer`.
 + Set the `Filename` field to...
-	+ To your filename and the c# code will try and resolve it to a fully qualified path, look for it in streaming assets, or your persistent path `Yourfile.mp4`
+	+ To your filename `Yourfile.mp4`, and the c# code will try and resolve it to a fully qualified path, look for it in [streaming assets](http://docs.unity3d.com/Manual/StreamingAssets.html), or your [persistent data path](http://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html) for files [downloaded with WWW](http://docs.unity3d.com/ScriptReference/WWW.html).
 	+ Specifically to a special folder; `streamingassets:YourFile.mp4` or `persistentdata:YourFile.mp4`
 	+ For Android you can use `apk:YourFile.mp4` which will explicitly load from the assets (streaming assets) in the APK, or if you have a downloaded/store updated OBB file it will look in there for the latest version
 	+ Again for android, `sdcard:YourFile.mp4` looks specifically in the external storage for your file

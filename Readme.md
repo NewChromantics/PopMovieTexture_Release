@@ -134,7 +134,9 @@ We have provided some simple movie playback components with full power, but lots
 The simple way
 ---------------------------------------------
 + Create a new game object in the scene and attach a `PopMovie/PopMovieSimple.cs` component
-+ Create a render target texture (A normal texture2D can be used, but you must set it to be writable!) and set it on the `Target Texture` field
++ Create a `RenderTexture` texture to draw the movie to, or select a normal `texture2D` texture and set it on the `Target Texture` field
+	+ If using a `Texture2D` you must set this to be `writable` in the advanced settings.
+	+ If using a `RenderTexture` you must set the Depth Buffer setting to `No Depth Buffer`.
 + Set the `Filename` field to...
 	+ To your filename and the c# code will try and resolve it to a fully qualified path, look for it in streaming assets, or your persistent path `Yourfile.mp4`
 	+ Specifically to a special folder; `streamingassets:YourFile.mp4` or `persistentdata:YourFile.mp4`
@@ -142,7 +144,8 @@ The simple way
 	+ Again for android, `sdcard:YourFile.mp4` looks specifically in the external storage for your file
 	+ A window-capture name `window:Notepad` or `window:*`. This is only for windows or OSX
 	+ A webcam or other device (microphone, phone camera etc) `device:isight` or `device:mic` or `device:*`
-+ Play! Your file should load, auto play, and be drawn to your target texture, which you can use on a material or draw to screen, or whatever you want!
++ Play! Your file should load, (An exception will be thrown if it fails), auto play, and be drawn to your target texture. You can check this in the inspector. Then assign your texture to a material, cube draw to the UI, or do whatever you want with it!
++ If you want to adjust any elements (for example change aspect ratio of a UI element). Use the `GetMeta()` function to find width & height information.
 
 
 Capturing Cameras & Devices

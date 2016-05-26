@@ -219,11 +219,13 @@ I cannot hear any audio
 
 Audio doesn't sound correct
 ---------------------------------------------
-+ If the source sample rate or channel count is different from the project's audio settings, the sound won't be remuxed and will sound slow, fast or echo'y. (some platforms try to do this automatically in the hardware AAC/MP3/etc decoder) Enable debug logging to confirm the mix-match. To fix, change the your projects audio settings or re-encode the video. (Future versions will remix the audio at runtime, but the quality may not be as good)
++ As of `0.1.7` this should no longer be an issue on any platform. Please [contact us](mailto:help@popmovie.xyz) or [report a bug](https://github.com/NewChromantics/PopMovieTexture_Release/issues) if this is the case!
++ `Previous answer:` If the source sample rate or channel count is different from the project's audio settings, the sound won't be remuxed and will sound slow, fast or echo'y. (some platforms try to do this automatically in the hardware AAC/MP3/etc decoder) Enable debug logging to confirm the mix-match. To fix, change the your projects audio settings or re-encode the video. (Future versions will remix the audio at runtime, but the quality may not be as good)
+
 
 My problem isn't listed!
 ---------------------------------------------
-+ send us an email to [help@popmovie.xyz](mailto:help@popmovie.xyz), or [submit an issue](https://github.com/NewChromantics/PopMovieTexture_Release/releases) to the github issue tracker.
++ send us an email to [help@popmovie.xyz](mailto:help@popmovie.xyz), or [submit an issue](https://github.com/NewChromantics/PopMovieTexture_Release/issues) to the github issue tracker.
 
 
 

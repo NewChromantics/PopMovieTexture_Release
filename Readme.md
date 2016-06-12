@@ -178,10 +178,11 @@ Features & options
 =============================================
 Split audio channels
 ---------------------------------------------
-When this option is enabled, channels from streams are split to produce additional faux streams containing just that channels data. This allows you to place one `Audio Source` component (and therefore, position, audio mix, volume) for every channel. This works for multiple audio streams.
-For example, splitting a stereo stream produces audio stream `0` (the original), `1` (Left) and `2` (Right).
-A mono source would produce `0` (the orignal) and `1` (a duplicate of the original as there is only one channel)
-Two stereo sources would produce `0` (original of stream 0), `1` (original of stream 1), `2` (Stream0 Left), `3` (stream0 right), `4`(Stream 1 Left) and `5` (stream1 right)
++ Added in v0.1.9
++ When this option is enabled, channels from streams are split to produce additional faux streams containing just that channels data. This allows you to place one `Audio Source` component (and therefore, position, audio mix, volume) for every channel. This works for multiple audio streams.
++ For example, splitting a stereo stream produces audio stream `0` (the original), `1` (Left) and `2` (Right).
++ A mono source would produce `0` (the orignal) and `1` (a duplicate of the original as there is only one channel)
++ Two stereo sources would produce `0` (original of stream 0), `1` (original of stream 1), `2` (Stream0 Left), `3` (stream0 right), `4`(Stream 1 Left) and `5` (stream1 right)
 
 
 Problems and solutions

@@ -97,11 +97,11 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: .5
+        second: 0.5
       data:
         first:
           name: _Parallax
-        second: .0199999996
+        second: 0.02
       data:
         first:
           name: _ZWrite
@@ -109,7 +109,7 @@ Material:
       data:
         first:
           name: _Glossiness
-        second: .5
+        second: 0.5
       data:
         first:
           name: _BumpScale
@@ -136,15 +136,19 @@ Material:
         second: 0
       data:
         first:
+          name: DepthRangeMax
+        second: 0.23
+      data:
+        first:
+          name: DepthRangeMin
+        second: 0
+      data:
+        first:
           name: DepthMax
         second: 10000
       data:
         first:
-          name: DepthRangeMax
-        second: .300000012
-      data:
-        first:
-          name: DepthRangeMin
+          name: DiscardNonDepth
         second: 0
     m_Colors:
       data:
@@ -155,3 +159,7 @@ Material:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: InvalidColour
+        second: {r: 0, g: 0, b: 1, a: 1}

@@ -1,12 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-
-
 
 public class KinectPopMovie : PopMovieSimple {
 
@@ -30,14 +24,4 @@ public class KinectPopMovie : PopMovieSimple {
 		}
 	}
 }
-
-
-/* gr: not sure why this won't reslve PopMovieSimpleInspector
-#if UNITY_EDITOR
-[CustomEditor(typeof(KinectPopMovie))]
-public class KinectPopMovieInspector : PopMovieSimpleInspector
-{
-}
-#endif
-*/
 

@@ -235,6 +235,16 @@ Audio doesn't sound correct
 + As of `0.1.7` this should no longer be an issue on any platform. Please [contact us](mailto:help@popmovie.xyz) or [report a bug](https://github.com/NewChromantics/PopMovieTexture_Release/issues) if this is the case!
 + `Previous answer:` If the source sample rate or channel count is different from the project's audio settings, the sound won't be remuxed and will sound slow, fast or echo'y. (some platforms try to do this automatically in the hardware AAC/MP3/etc decoder) Enable debug logging to confirm the mix-match. To fix, change the your projects audio settings or re-encode the video. (Future versions will remix the audio at runtime, but the quality may not be as good)
 
+iOS Fails to compile with undefined symbols _VTDecompressionSession...
+---------------------------------------------
++ Although the UnityPackage is setup so that when you build the ios xcode project, it should add the `VideoToolbox.framework`, sometimes it doesn't.
++ If you get linker errors similar to the following, then under your project's target, under `Build Phases`, `Link Binary with Libraries`, click `[+]` and find `VideoToolbox.framework` and add it. This should exist from iOS sdk 7.0 onwards.
+	+ `"_kVTDecompressionPropertyKey_RealTime", referenced from:`
+	+ `"_VTDecompressionSessionCreate", referenced from:`
+	+ `"_VTDecompressionSessionCanAcceptFormatDescription", referenced from:`
+	+ `"_VTDecompressionSessionDecodeFrame", referenced from:`
+	+ `"_VTDecompressionSessionInvalidate", referenced from:`
+
 
 My problem isn't listed!
 ---------------------------------------------

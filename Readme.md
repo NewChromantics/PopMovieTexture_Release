@@ -251,6 +251,10 @@ Gifs are not animated
 + This may still work for your case though. For the filename, use
 	+ `experimental:yourfile.gif` This currently limits you to only file access. If you require this to be accessible through HTTP or another protocol (eg. `sdcard:` `apk:`) then let me know and I can make this more public. 
 
+CodeSigning on iOS fails
+---------------------------------------------
++ When archiving an ios project (for ad-hoc or store builds), if you get the vague xcode error; `An error occurred during export; codesign failed` you may see in `Summary` that `PopMovieTextureOsx.bundle` is in the list of `Binary and Entitlements`. If this is the case, simply remove (or disable) the OSX `PopMovieTextureOsx.bundle` from your xcode project. Often unity will automatically lump this in with the iOS projects it generates.
+
 My problem isn't listed!
 ---------------------------------------------
 + send us an email to [help@popmovie.xyz](mailto:help@popmovie.xyz), or [submit an issue](https://github.com/NewChromantics/PopMovieTexture_Release/issues) to the github issue tracker.

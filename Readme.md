@@ -245,6 +245,11 @@ iOS Fails to compile with undefined symbols _VTDecompressionSession...
 	+ `"_VTDecompressionSessionDecodeFrame", referenced from:`
 	+ `"_VTDecompressionSessionInvalidate", referenced from:`
 
+Gifs are not animated
+---------------------------------------------
++ The current implementation of `.gif` handling only extracts the first frame of gifs. There is a new .gif decoder which essentially works, but is still slow with very large sizes, and still needs work to align frames, use alpha-compression, and generally needs moving to GPU. 
++ This may still work for your case though. For the filename, use
+	+ `experimental:yourfile.gif` This currently limits you to only file access. If you require this to be accessible through HTTP or another protocol (eg. `sdcard:` `apk:`) then let me know and I can make this more public. 
 
 My problem isn't listed!
 ---------------------------------------------

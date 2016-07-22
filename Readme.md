@@ -48,6 +48,7 @@ Cross-platform Features
 + Can be used independently of unity with the C interface or as an osx framework (enquire for details)
 + Various image format support (GIF, TGA, PNG, BMP, PSD)
 + Realtime Window capture on windows & osx
++ Bink support on a per-contract basis ([contact for details](mailto:help@popmovie.xyz) for windows, PS4, OSX, ios & android.
 
 Android Features
 ---------------------------------------------
@@ -83,6 +84,20 @@ Windows Features
 + video camera/webcam/microphone support
 + File seeking forwards & backwards where supported
 + File-streaming from HTTP urls
+ 
+PS4 Features
+---------------------------------------------
++ PS4 is only availible on a per-contract basis currently due to SCEE lisencing. [Contact for details](mailto:help@popmovie.xyz)
++ Decode with native/OS video decoder
++ Camera support
++ All other streaming and cross-platform (images, subtitles) features
+
+
+Bink Support
+---------------------------------------------
++ Bink is availible on a per-contract basis, requiring a [RAD Bink lisence first](http://www.radgametools.com/bnkmain.htm). [Contact for integration details](mailto:help@popmovie.xyz)
+ 
+
 
 Supported Platform versions & devices
 ---------------------------------------------
@@ -122,6 +137,7 @@ Planned todo list
 This is a list of our high-priority upcoming features
 
 + Metal support for iOS & OSX
++ Directx9, 10, 12
 + HLS streaming across all platforms
 + HAP codec support
 + Kinect & Kinect2 for windows
@@ -174,6 +190,7 @@ On windows and OSX PopMovie has the ability to capture window contents and displ
 + Window capture on Windows7 can sometimes be slow. This doesn't affect Unity's framerate, but can make applications or the contents seem laggy.
 + On Windows, there is an option named `Include Window Borders` which allows you to capture the whole window (Title bars, Minimise, close buttons etc), or just the client area
 + On Windows, you can get the full title and HWND value from `PopMovie.GetMeta()`
+
 
 
 Features & options

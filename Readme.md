@@ -137,7 +137,7 @@ Planned todo list
 This is a list of our high-priority upcoming features
 
 + Metal support for iOS & OSX
-+ Directx9, 10, 12
++ Directx 12
 + HLS streaming across all platforms
 + HAP codec support
 + Kinect & Kinect2 for windows
@@ -173,7 +173,7 @@ PopMovie also captures from OS camera & capture devices. This includes microphon
 
 + Prefix the `Filename` field with `device:` to capture.
 + `device:*` will capture from the first device it finds
-+ `device:MMP` for the HTC Vive camera
++ `device:MMP` for the HTC Vive camera (This needs to be enabled in SteamVR's settings first!)
 + `device:isight` for iMac monitor Cameras
 + `device:mic` commonly gets a microphone for most platforms
 
@@ -271,6 +271,10 @@ Gifs are not animated
 CodeSigning on iOS fails
 ---------------------------------------------
 + When archiving an ios project (for ad-hoc or store builds), if you get the vague xcode error; `An error occurred during export; codesign failed` you may see in `Summary` that `PopMovieTextureOsx.bundle` is in the list of `Binary and Entitlements`. If this is the case, simply remove (or disable) the OSX `PopMovieTextureOsx.bundle` from your xcode project. Often unity will automatically lump this in with the iOS projects it generates.
+
+My Vive camera (MMP) isn't found
+---------------------------------------------
++ By default, this device is now disabled. Enable it in `SteamVR`, `Settings`, `Camera` and it should then be availible to PopMovie. The device name is `device:MMP`
 
 My problem isn't listed!
 ---------------------------------------------

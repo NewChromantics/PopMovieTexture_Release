@@ -109,6 +109,9 @@ This is not a definitive list as the requirements and limitations can vary betwe
 + Android API level 16 and above (4.1 Jelly-bean)
 	+ Limitations: http://developer.android.com/guide/appendix/media-formats.html
 + OSX 10.7+ 32bit, 64bit & universal builds
+	+ h264: Up to Profile level 4.1. 
+	+ h264: Level 5.0 decodes very poorly
+	+ h265: Not supported by OS. (as of 10.12)
 + iPhone 5s+, iPad Air2/Retina, iPad Mini
 	+ iOS6+
 	+ h264: 4k / 60fps / High Profile level 4.1

@@ -1,3 +1,8 @@
+This library (especially this release) has been deprecated for the fully open source PopH264.
+https://github.com/NewChromantics/PopH264
+
+
+
 PopMovie
 =============================================
 
